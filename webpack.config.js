@@ -7,7 +7,7 @@ const appData=require('./data.json')
 
 module.exports = {
     entry: {
-        index: ['./src/index','./src/common/reset']
+        index: ['./src/index','./src/common/css/index',]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -35,13 +35,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                use: ['style-loader', {
-                    loader: 'css-loader', options: {
-                        modules: true,
-                        importLoaders: 1,
-                        localIdentName: '[name]--[local]--[hash:base64:5]'
-                    }
-                }, 'less-loader']
+                use: ['style-loader', 'css-loader', 'less-loader','postcss-loader']
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -70,6 +64,7 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
+        host:'192.168.2.199',
         port: 1008,
         contentBase: './',
         compress: true,
