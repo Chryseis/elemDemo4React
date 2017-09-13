@@ -3,7 +3,7 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const appData=require('./data.json')
+const appData=require('./data.json');
 
 module.exports = {
     entry: {
