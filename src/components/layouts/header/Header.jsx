@@ -19,7 +19,7 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        const {actions}=this.props;
+        const {actions} = this.props;
         actions.getSeller();
     }
 
@@ -34,7 +34,7 @@ class Header extends React.Component {
     }
 
     render() {
-        const {info}=this.props.seller;
+        const {info} = this.props.seller;
         return <div className="header">
             <div className="content-wrapper">
                 <div className="avatar">
@@ -56,8 +56,21 @@ class Header extends React.Component {
                         </div>
                     }
                 </div>
+                {
+                    info.supports && info.supports.length > 0 && <div className="support-count">
+                        <span className="count">{info.supports.length}个</span>
+                        <i className="icon-keyboard_arrow_right"></i>
+                    </div>
+                }
             </div>
-            <div className="bulletin-wrapper"></div>
+            <div className="bulletin-wrapper">
+                <span className="bulletin-title"></span>
+                <span className="bulletin-text">{info.bulletin}</span>
+                <i className="icon-keyboard_arrow_right"></i>
+            </div>
+            <div className="background">
+                <img src={info.avatar} width="100%" height="100%"/>
+            </div>
         </div>
     }
 }

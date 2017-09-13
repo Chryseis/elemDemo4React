@@ -1,19 +1,22 @@
 @import "../../../common/css/mixin";
 
-@brand:"../../components/layouts/header/images/brand";
-@decrease:"../../components/layouts/header/images/decrease_1";
-@discount:"../../components/layouts/header/images/discount_1";
-@guarantee:"../../components/layouts/header/images/guarantee_1";
-@invoice:"../../components/layouts/header/images/invoice_1";
-@special:"../../components/layouts/header/images/special_1";
+@brand: "../../components/layouts/header/images/brand";
+@decrease: "../../components/layouts/header/images/decrease_1";
+@discount: "../../components/layouts/header/images/discount_1";
+@guarantee: "../../components/layouts/header/images/guarantee_1";
+@invoice: "../../components/layouts/header/images/invoice_1";
+@special: "../../components/layouts/header/images/special_1";
+@bulletin: "../../components/layouts/header/images/bulletin";
 
 .app {
   .header {
+    position: relative;
     color: #fff;
+    background-color: rgba(7,17,27,.5);
     .content-wrapper {
+      position: relative;
       padding: 24px 12px 18px 24px;
       font-size: 0;
-      background-color: #000;
       .avatar {
         display: inline-block;
         margin-right: 16px;
@@ -24,7 +27,6 @@
       }
       .content {
         display: inline-block;
-        position: relative;
         .title {
           font-size: 16px;
           font-weight: bold;
@@ -51,7 +53,7 @@
           font-size: 10px;
           font-weight: 200;
           line-height: 12px;
-          .icon{
+          .icon {
             display: inline-block;
             width: 12px;
             height: 12px;
@@ -59,24 +61,83 @@
             background-size: 12px 12px;
             background-repeat: no-repeat;
             vertical-align: top;
-            &.decrease{
+            &.decrease {
               .bg-image(@decrease)
             }
-            &.discount{
+            &.discount {
               .bg-image(@discount)
             }
-            &.guarantee{
+            &.guarantee {
               .bg-image(@guarantee)
             }
-            &.invoice{
+            &.invoice {
               .bg-image(@invoice)
             }
-            &.special{
+            &.special {
               .bg-image(@special)
             }
           }
         }
       }
+      .support-count {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        padding: 0 8px;
+        border-radius: 14px;
+        height: 24px;
+        line-height: 24px;
+        background-color: rgba(0, 0, 0, .2);
+        text-align: center;
+        .count {
+          font-size: 10px;
+          vertical-align: top;
+          margin-right: 2px;
+        }
+        i {
+          font-size: 10px;
+          line-height: 24px;
+        }
+      }
+    }
+    .bulletin-wrapper {
+      position: relative;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 22px 0 12px;
+      .ellipsis();
+      background-color: rgba(7, 17, 27, .2);
+      .bulletin-title {
+        display: inline-block;
+        width: 22px;
+        height: 12px;
+        .bg-image(@bulletin);
+        background-size: 22px 12px;
+        background-repeat: no-repeat;
+        vertical-align: top;
+        margin-top: 7px;
+      }
+      .bulletin-text {
+        font-size: 10px;
+        margin: 0 8px;
+        vertical-align: top;
+      }
+      i{
+        position: absolute;
+        font-size: 10px;
+        right: 12px;
+        top:50%;
+        transform:translateY(-50%);
+      }
+    }
+    .background{
+      position: absolute;
+      width: 100%;
+      height: 97%;
+      top:0;
+      left: 0;
+      z-index: -1;
+      filter: blur(10px);
     }
   }
 }
