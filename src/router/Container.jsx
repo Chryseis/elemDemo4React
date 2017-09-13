@@ -23,7 +23,7 @@ class Container extends React.Component {
     render() {
         return <Provider store={store}>
             <Router>
-                <div>
+                <div className="app">
                     <Header />
                     <Tab />
                     <Switch>

@@ -25,7 +25,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                loader: 'babel-loader'
+                loader: ['babel-loader','eslint-loader']
             },
             {
                 test: /.(css|less)$/,
@@ -35,7 +35,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                use: ['style-loader', 'css-loader', 'less-loader','postcss-loader']
+                use: ['style-loader', 'css-loader','postcss-loader', 'less-loader',]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

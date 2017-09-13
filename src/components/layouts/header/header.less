@@ -1,0 +1,82 @@
+@import "../../../common/css/mixin";
+
+@brand:"../../components/layouts/header/images/brand";
+@decrease:"../../components/layouts/header/images/decrease_1";
+@discount:"../../components/layouts/header/images/discount_1";
+@guarantee:"../../components/layouts/header/images/guarantee_1";
+@invoice:"../../components/layouts/header/images/invoice_1";
+@special:"../../components/layouts/header/images/special_1";
+
+.app {
+  .header {
+    color: #fff;
+    .content-wrapper {
+      padding: 24px 12px 18px 24px;
+      font-size: 0;
+      background-color: #000;
+      .avatar {
+        display: inline-block;
+        margin-right: 16px;
+        vertical-align: top;
+        img {
+          border-radius: 4px;
+        }
+      }
+      .content {
+        display: inline-block;
+        position: relative;
+        .title {
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 18px;
+          margin: 2px 0 8px 0;
+          .brand {
+            display: inline-block;
+            width: 30px;
+            height: 18px;
+            margin-right: 6px;
+            .bg-image(@brand);
+            background-size: 30px 18px;
+            background-repeat: no-repeat;
+            vertical-align: top;
+          }
+        }
+        .description {
+          font-size: 12px;
+          font-weight: 200;
+          line-height: 12px;
+          margin-bottom: 10px;
+        }
+        .support {
+          font-size: 10px;
+          font-weight: 200;
+          line-height: 12px;
+          .icon{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 4px;
+            background-size: 12px 12px;
+            background-repeat: no-repeat;
+            vertical-align: top;
+            &.decrease{
+              .bg-image(@decrease)
+            }
+            &.discount{
+              .bg-image(@discount)
+            }
+            &.guarantee{
+              .bg-image(@guarantee)
+            }
+            &.invoice{
+              .bg-image(@invoice)
+            }
+            &.special{
+              .bg-image(@special)
+            }
+          }
+        }
+      }
+    }
+  }
+}

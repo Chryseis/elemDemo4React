@@ -7,9 +7,14 @@
       "jsx": true
     }
   },
+  "plugins": [
+    "css-modules"
+  ],
+  "extends": [
+    "plugin:css-modules/recommended"
+  ],
   "rules": {
     "no-console": 1,
-    "no-debugger": 1,
-    "quotes":[1,"single"]
+    "no-debugger": 1
   }
 }

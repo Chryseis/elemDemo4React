@@ -3,6 +3,7 @@
  */
 import {seller as  Action} from '../constants/actionType'
 import fetch from '../common/js/fetch'
+import {resCode} from '../constants/resCode'
 
 export function getSeller() {
     return async(dispatch) => {
@@ -10,7 +11,7 @@ export function getSeller() {
             method: 'get'
         })
         let json = await res.json();
-        if (json.errno === 0) {
+        if (json.errno === resCode.OK) {
             return dispatch({
                 type: Action.GET_SELLER,
                 data: json.data

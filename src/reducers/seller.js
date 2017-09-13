@@ -4,13 +4,13 @@
 import {seller as Action} from '../constants/actionType'
 
 const initialState = {
-    seller: {}
+    info: {}
 }
 
 const reducersMap = {
     [Action.GET_SELLER]: (state, action) => {
         return {
-            seller: action.data
+            info: action.data
         }
     }
 }
