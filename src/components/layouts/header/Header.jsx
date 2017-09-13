@@ -23,13 +23,13 @@ class Header extends React.Component {
         actions.getSeller();
     }
 
-    supportClassType=(type)=>{
+    supportClassType = () => {
         return {
-            0:'decrease',
-            1:'discount',
-            2:'guarantee',
-            3:'invoice',
-            4:'special'
+            0: 'decrease',
+            1: 'discount',
+            2: 'guarantee',
+            3: 'invoice',
+            4: 'special'
         }
     }
 
@@ -48,11 +48,13 @@ class Header extends React.Component {
                     <div className="description">
                         {`${info.description}/${info.deliveryTime}`}分钟送达
                     </div>
-                    <div className="support">
-                        <span className="icon decrease"></span>
-                        <span
-                            className="text">{info.supports && info.supports.length > 0 && info.supports[0].description}</span>
-                    </div>
+                    {
+                        info.supports && info.supports.length > 0 && <div className="support">
+                            <span className={`icon ${this.supportClassType()[info.supports[0].type]}`}></span>
+                            <span
+                                className="text">{info.supports[0].description}</span>
+                        </div>
+                    }
                 </div>
             </div>
             <div className="bulletin-wrapper"></div>
