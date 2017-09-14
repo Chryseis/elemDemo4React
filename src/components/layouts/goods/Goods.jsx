@@ -10,7 +10,10 @@ class Goods extends React.Component {
     }
 
     render() {
-        return <div>goods</div>
+        return <div className="goods">
+            <div className="menu-wrapper"></div>
+            <div className="foods-wrapper"></div>
+        </div>
     }
 }
 
