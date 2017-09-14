@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch,Redirect} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import configureStore from '../store/configureStore';
 import Header from '../components/layouts/header';
@@ -27,7 +27,8 @@ class Container extends React.Component {
                     <Header />
                     <Tab />
                     <Switch>
-                        <Route exact path="/" render={(props) => <Seller {...props} />}/>
+                        <Route exact path="/" render={() => <Redirect to="/goods"/>}/>
+                        <Route exact path="/seller" render={(props) => <Seller {...props} />}/>
                         <Route exact path="/goods" render={(props) => <Goods {...props} />}/>
                         <Route exact path="/ratings" render={(props) => <Ratings {...props} />}/>
                         <Route render={() => <div>404</div>}/>

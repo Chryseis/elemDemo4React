@@ -89,9 +89,11 @@ class Header extends React.Component {
                     })
                 }}
                 onExited={()=>{
-                    this.setState({
-                        detailVisible:false
-                    })
+                    setTimeout(()=>{
+                        this.setState({
+                            detailVisible:false
+                        })
+                    },500)
                 }}
             >
                 {
