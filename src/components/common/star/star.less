@@ -1,0 +1,75 @@
+@import "../../../common/css/mixin";
+
+@star48on: "../../components/common/star/images/star48_on";
+@star48half:"../../components/common/star/images/star48_half";
+@star48off:"../../components/common/star/images/star48_off";
+@star36on:"../../components/common/star/images/star36_on";
+@star36half:"../../components/common/star/images/star36_half";
+@star36off:"../../components/common/star/images/star36_off";
+@star24on:"../../components/common/star/images/star24_on";
+@star24half:"../../components/common/star/images/star24_half";
+@star24off:"../../components/common/star/images/star24_off";
+
+.star-container {
+  font-size: 0;
+  .star-item-48 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 22px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    &:last-child{
+      margin-right: 0;
+    }
+    &.on {
+      .bg-image(@star48on)
+    }
+    &.half {
+      .bg-image(@star48half)
+    }
+    &.off {
+      .bg-image(@star48off)
+    }
+  }
+  .star-item-36 {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 16px;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    &:last-child{
+      margin-right: 0;
+    }
+    &.on {
+      .bg-image(@star36on)
+    }
+    &.half {
+      .bg-image(@star36half)
+    }
+    &.off {
+      .bg-image(@star36off)
+    }
+  }
+  .star-item-24 {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    &:last-child{
+      margin-right: 0;
+    }
+    &.on {
+      .bg-image(@star24on)
+    }
+    &.half {
+      .bg-image(@star24half)
+    }
+    &.off {
+      .bg-image(@star24off)
+    }
+  }
+}

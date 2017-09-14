@@ -3,11 +3,11 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const appData=require('./data.json');
+const appData = require('./data.json');
 
 module.exports = {
     entry: {
-        index: ['./src/index','./src/common/css/index',]
+        index: ['./src/index', './src/common/css/index',]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -25,7 +25,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                loader: ['babel-loader','eslint-loader']
+                loader: ['babel-loader', 'eslint-loader']
             },
             {
                 test: /.(css|less)$/,
@@ -35,7 +35,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                use: ['style-loader', 'css-loader','postcss-loader', 'less-loader',]
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader',]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -64,31 +64,34 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
-        host:'192.168.1.106',
+        host: '192.168.0.199',
         port: 1008,
         contentBase: './',
         compress: true,
         historyApiFallback: true,
         setup(app){
-            app.get('/api/seller',(req,res)=>{
+            app.get('/api/seller', (req, res) => {
                 res.json({
-                    errno:0,
-                    data:appData.seller
+                    errno: 0,
+                    data: appData.seller
                 })
-            }).get('/api/goods',(req,res)=>{
+            }).get('/api/goods', (req, res) => {
                 res.json({
-                    errno:0,
-                    data:appData.goods
-                }).get('/api/ratings',(req,res)=>{
+                    errno: 0,
+                    data: appData.goods
+                }).get('/api/ratings', (req, res) => {
                     res.json({
-                        errno:0,
-                        data:appData.ratings
+                        errno: 0,
+                        data: appData.ratings
                     })
                 })
             })
         }
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            "_": "lodash"
+        })
     ]
 }

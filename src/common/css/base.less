@@ -1,8 +1,11 @@
 body, html {
   line-height: 1;
-  font-size: 16px;
   font-weight: 200;
   font-family: 'PingFang SC', 'STHeitiSC-Light', Arial, sans-serif;
+  font-size: 16px;
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    font-size: 18px;
+  }
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
@@ -22,7 +25,14 @@ body, html {
 }
 
 .clearfix {
+  display: inline-block;
   &:after {
+    display: block;
+    content: "";
+    height: 0;
     clear: both;
+    visibility: hidden;
   }
 }
+
+

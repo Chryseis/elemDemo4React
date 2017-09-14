@@ -12,10 +12,10 @@ class Tab extends React.Component {
     }
 
     render() {
-        return <div className='tab border-1px'>
-            <NavLink exact className='tab-item' to='/'>商品</NavLink >
-            <NavLink exact className='tab-item' to='/goods'>评论</NavLink >
-            <NavLink exact className='tab-item' to='/ratings'>商家</NavLink >
+        return <div className="tab border-1px">
+            <NavLink exact className="tab-item" to="/">商品</NavLink >
+            <NavLink exact className="tab-item" to="/goods">评论</NavLink >
+            <NavLink exact className="tab-item" to="/ratings">商家</NavLink >
         </div>
     }
 }
