@@ -7,7 +7,13 @@ const initialState = {
     goods: {}
 }
 
-const reducersMap = {}
+const reducersMap = {
+    [Action.GET_GOODS]:(state,action)=>{
+        return {
+            goods:action.data
+        }
+    }
+}
 
 export default function goods(state = initialState, action) {
     const reduceFn = reducersMap[action.type];

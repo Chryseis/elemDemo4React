@@ -3,6 +3,7 @@
  */
 import {ratings as  Action} from '../constants/actionType'
 import fetch from '../common/js/fetch'
+import {resCode} from '../constants/resCode'
 
 export function getRatings() {
     return async(dispatch) => {
@@ -10,7 +11,7 @@ export function getRatings() {
             method: 'get'
         })
         let json = res.json();
-        if (json.errno === 0) {
+        if (json.errno === resCode.OK) {
             return dispatch({
                 type: Action.GET_RATINGS,
                 data: json.data

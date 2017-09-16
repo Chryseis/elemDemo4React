@@ -5,7 +5,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Transition} from 'react-transition-group';
 import * as SellerActionCreator from '../../../actions/seller';
 import './header.less';
 import Star from '../../common/star';

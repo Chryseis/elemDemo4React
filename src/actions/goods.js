@@ -3,14 +3,15 @@
  */
 import {goods as  Action} from '../constants/actionType'
 import fetch from '../common/js/fetch'
+import {resCode} from '../constants/resCode'
 
 export function getGoods() {
-    return async(dispatch) => {
+    return async (dispatch) => {
         let res = await fetch('/api/goods', {
             method: 'get'
         })
         let json = res.json();
-        if (json.errno === 0) {
+        if (json.errno === resCode.OK) {
             return dispatch({
                 type: Action.GET_GOODS,
                 data: json.data
