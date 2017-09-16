@@ -115,61 +115,6 @@ class Header extends React.Component {
                     </div>
                 </div>
             </Mask>
-            {/*<Transition in={this.state.in} timeout={500}*/}
-                {/*onEnter={()=>{*/}
-                    {/*this.setState({*/}
-                        {/*detailVisible:true*/}
-                    {/*})*/}
-                {/*}}*/}
-                {/*onExited={()=>{*/}
-                    {/*setTimeout(()=>{*/}
-                        {/*this.setState({*/}
-                            {/*detailVisible:false*/}
-                        {/*})*/}
-                    {/*},500)*/}
-                {/*}}*/}
-            {/*>*/}
-                {/*{*/}
-                    {/*(status) => (<div className={`detail fade ${status}`}*/}
-                                      {/*style={{display: this.state.detailVisible ? 'block' : 'none'}}>*/}
-                        {/*<div className="detail-wrapper">*/}
-                            {/*<div className="detail-main">*/}
-                                {/*<h1 className="name">{info.name}</h1>*/}
-                                {/*<Star className="star-container" score={info.score}/>*/}
-                                {/*<div className="title">*/}
-                                    {/*<div className="line"></div>*/}
-                                    {/*<div className="text">优惠信息</div>*/}
-                                    {/*<div className="line"></div>*/}
-                                {/*</div>*/}
-                                {/*{*/}
-                                    {/*info.supports && info.supports.length > 0 && <ul className="supports">*/}
-                                        {/*{*/}
-                                            {/*_.map(info.supports, (support, i) => {*/}
-                                                {/*return <li className="support-item" key={i}>*/}
-                                                    {/*<span*/}
-                                                        {/*className={`icon ${this.supportClassType()[support.type]}`}></span>*/}
-                                                    {/*<span className="text">{support.description}</span>*/}
-                                                {/*</li>*/}
-                                            {/*})*/}
-                                        {/*}*/}
-                                    {/*</ul>*/}
-                                {/*}*/}
-                                {/*<div className="title">*/}
-                                    {/*<div className="line"></div>*/}
-                                    {/*<div className="text">商家公告</div>*/}
-                                    {/*<div className="line"></div>*/}
-                                {/*</div>*/}
-                                {/*<div className="bulletin">*/}
-                                    {/*<p className="content">{info.bulletin}</p>*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
-                        {/*<div className="detail-close" onClick={() => this.showMask(false)}>*/}
-                            {/*<i className="icon-close"></i>*/}
-                        {/*</div>*/}
-                    {/*</div>)*/}
-                {/*}*/}
-            {/*</Transition>*/}
         </div>
     }
 }

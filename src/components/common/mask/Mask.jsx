@@ -18,7 +18,7 @@ class Mask extends React.Component {
 
     render() {
         const {visible,onClose}=this.props;
-        return <Transition in={visible} timeout={500}
+        return <Transition appear in={visible} timeout={500}
                            onEnter={() => {
                                this.setState({
                                    detailVisible: true
