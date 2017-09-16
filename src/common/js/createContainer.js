@@ -21,19 +21,21 @@ const createContainer = (DecoratorsComponent) => {
             visible: false
         }
 
+        removeMask = () => {
+            this.div && ReactDOM.unmountComponentAtNode(this.div);
+            document.body.removeChild(this.div);
+            this.div=null;
+        }
+
         componentWillReceiveProps(nextProps) {
             if (!this.div && nextProps.visible) {
                 this.div = document.createElement('div');
                 document.body.appendChild(this.div);
             }
             this.div && ReactDOM.render(
-                <DecoratorsComponent {...nextProps}>{nextProps.children}</DecoratorsComponent>, this.div);
+                <DecoratorsComponent {...nextProps} removeMask={this.removeMask}>{nextProps.children}</DecoratorsComponent>, this.div);
         }
 
-        componentWillUnmount() {
-            this.div && ReactDOM.unmountComponentAtNode(this.div);
-            document.body.removeChild(this.div);
-        }
 
         render() {
             return null;
