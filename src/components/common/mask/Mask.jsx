@@ -17,7 +17,7 @@ class Mask extends React.Component {
     }
 
     render() {
-        const {visible,onClose,removeMask}=this.props;
+        const {visible, onClose, removeMask} = this.props;
         return <Transition appear in={visible} timeout={500}
                            onEnter={() => {
                                this.setState({
@@ -28,24 +28,24 @@ class Mask extends React.Component {
                                setTimeout(() => {
                                    this.setState({
                                        detailVisible: false
-                                   },()=>removeMask())
+                                   }, () => removeMask())
                                }, 500)
                            }}
-        >
-            {
-                (status) => (<div className={`detail fade ${status}`}
-                                  style={{display: this.state.detailVisible ? 'block' : 'none'}}>
-                    <div className="detail-wrapper">
-                        {this.props.children}
-                    </div>
-                    <div className="detail-close" onClick={onClose}>
-                        <i className="icon-close"></i>
-                    </div>
-                </div>)
-            }
-        </Transition>
-    }
+                               >
+                           {
+                               (status) => (<div className={`detail fade ${status}`}
+                               style={{display: this.state.detailVisible ? 'block' : 'none'}}>
+                               <div className="detail-wrapper">
+                               {this.props.children}
+                               </div>
+                               <div className="detail-close" onClick={onClose}>
+                               <i className="icon-close"></i>
+                               </div>
+                               </div>)
+                           }
+                               </Transition>
+                               }
 }
 
-export default Mask
+    export default Mask
 
