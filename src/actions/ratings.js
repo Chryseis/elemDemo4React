@@ -10,7 +10,7 @@ export function getRatings() {
         let res = await fetch('/api/ratings', {
             method: 'get'
         })
-        let json = res.json();
+        let json = await res.json();
         if (json.errno === resCode.OK) {
             return dispatch({
                 type: Action.GET_RATINGS,

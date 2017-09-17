@@ -10,7 +10,7 @@ export function getGoods() {
         let res = await fetch('/api/goods', {
             method: 'get'
         })
-        let json = res.json();
+        let json =  await res.json();
         if (json.errno === resCode.OK) {
             return dispatch({
                 type: Action.GET_GOODS,

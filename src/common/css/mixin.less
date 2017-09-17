@@ -10,3 +10,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.border-1px(@color){
+  &:after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid @color;
+    content: '';
+  }
+}

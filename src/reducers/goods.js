@@ -4,13 +4,13 @@
 import {goods as Action} from '../constants/actionType'
 
 const initialState = {
-    goods: {}
+    goodsInfo: []
 }
 
 const reducersMap = {
-    [Action.GET_GOODS]:(state,action)=>{
+    [Action.GET_GOODS]: (state, action) => {
         return {
-            goods:action.data
+            goodsInfo: action.data
         }
     }
 }

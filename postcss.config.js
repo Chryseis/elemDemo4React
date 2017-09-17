@@ -6,7 +6,7 @@ module.exports = {
         require('autoprefixer'),
         require('postcss-pxtorem')({
             rootValue:16,
-            propList:['*']
+            propList:['*', '!top','!bottom']
         })
     ]
 }
