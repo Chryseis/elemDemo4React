@@ -15,7 +15,7 @@ class FoodItem extends React.Component {
     }
 
     render() {
-        const {good}=this.props;
+        const {good} = this.props;
         return <li className="food-list">
             <h1 className="title">{good.name}</h1>
             <ul>

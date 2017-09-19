@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import * as GoodsActionCreator from '../../../actions/goods';
 import MenuItem from './MenuItem';
 import FoodItem from './FoodItem';
+import BScroll from 'better-scroll'
 
 @connect(state => ({
     seller: state.seller,
@@ -26,10 +27,15 @@ class Goods extends React.Component {
         actions.getGoods();
     }
 
+    componentDidUpdate(){
+        new BScroll(this.menuWrapper, {});
+        new BScroll(this.foodWrapper, {});
+    }
+
     render() {
         const {goodsInfo} = this.props.goods;
         return <div className="goods">
-            <div className="menu-wrapper">
+            <div className="menu-wrapper" ref={menuWrapper => this.menuWrapper = menuWrapper}>
                 <ul>
                     {
                         _.map(goodsInfo, (good, i) => {
@@ -38,11 +44,15 @@ class Goods extends React.Component {
                     }
                 </ul>
             </div>
-            <div className="foods-wrapper">
+            <div className="foods-wrapper" ref={foodWrapper => this.foodWrapper = foodWrapper}>
                 {
-                    _.map(goodsInfo, (good, i) => {
-                        return <FoodItem good={good} key={i}/>
-                    })
+                    <ul>
+                        {
+                            _.map(goodsInfo, (good, i) => {
+                                return <FoodItem good={good} key={i}/>
+                            })
+                        }
+                    </ul>
                 }
             </div>
         </div>
