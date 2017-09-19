@@ -7,6 +7,8 @@ import './goods.less';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as GoodsActionCreator from '../../../actions/goods';
+import MenuItem from './MenuItem';
+import FoodItem from './FoodItem';
 
 @connect(state => ({
     seller: state.seller,
@@ -24,16 +26,6 @@ class Goods extends React.Component {
         actions.getGoods();
     }
 
-    supportClassType = () => {
-        return {
-            0: 'decrease',
-            1: 'discount',
-            2: 'guarantee',
-            3: 'invoice',
-            4: 'special'
-        }
-    }
-
     render() {
         const {goodsInfo} = this.props.goods;
         return <div className="goods">
@@ -41,15 +33,18 @@ class Goods extends React.Component {
                 <ul>
                     {
                         _.map(goodsInfo, (good, i) => {
-                            return <li className="menu-item border-1px">
-                                <span className="text">{good.type > -1 && <span
-                                    className={`icon ${this.supportClassType()[good.type]}`}></span>}{good.name}</span>
-                            </li>
+                            return <MenuItem menu={good} key={i}/>
                         })
                     }
                 </ul>
             </div>
-            <div className="foods-wrapper"></div>
+            <div className="foods-wrapper">
+                {
+                    _.map(goodsInfo, (good, i) => {
+                        return <FoodItem good={good} key={i}/>
+                    })
+                }
+            </div>
         </div>
     }
 }

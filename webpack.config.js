@@ -64,7 +64,7 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
-        host: '192.168.1.106',
+        host: '192.168.0.199',
         port: 1008,
         contentBase: './',
         compress: true,
