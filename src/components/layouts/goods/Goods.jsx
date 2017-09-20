@@ -27,9 +27,9 @@ class Goods extends React.Component {
         actions.getGoods();
     }
 
-    componentDidUpdate(){
-        new BScroll(this.menuWrapper, {});
-        new BScroll(this.foodWrapper, {});
+    componentDidUpdate() {
+        this.menuScroll = new BScroll(this.menuWrapper, {});
+        this.foodScroll = new BScroll(this.foodWrapper, {});
     }
 
     render() {

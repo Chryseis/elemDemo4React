@@ -29,6 +29,14 @@
         padding: 0 12px;
         line-height: 14px;
         .border-1px(rgba(7, 17, 27, .1));
+        &.current{
+          position: relative;
+          z-index: 10;
+          margin-top: -1px;
+          background: #fff;
+          font-weight: 700;
+          .border-none();
+        }
         .text {
           display: table-cell;
           font-size: 12px;
