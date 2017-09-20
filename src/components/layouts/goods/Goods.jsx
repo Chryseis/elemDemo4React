@@ -19,7 +19,8 @@ import BScroll from 'better-scroll'
 }))
 class Goods extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.listHeight=[];
     }
 
     componentDidMount() {
@@ -30,7 +31,17 @@ class Goods extends React.Component {
     componentDidUpdate() {
         this.menuScroll = new BScroll(this.menuWrapper, {});
         this.foodScroll = new BScroll(this.foodWrapper, {});
+        let foodList = this.foodWrapper.getElementsByClassName('food-list-hook');
+        let height=0;
+        this.listHeight.push(height);
+        for (let i = 0; i < foodList.length; i++) {
+            let item = foodList[i];
+            height+=item.clientHeight;
+            this.listHeight.push(height);
+        }
     }
+
+
 
     render() {
         const {goodsInfo} = this.props.goods;
