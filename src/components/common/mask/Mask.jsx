@@ -31,21 +31,21 @@ class Mask extends React.Component {
                                    }, () => removeMask())
                                }, 500)
                            }}
-                               >
-                           {
-                               (status) => (<div className={`detail fade ${status}`}
-                               style={{display: this.state.detailVisible ? 'block' : 'none'}}>
-                               <div className="detail-wrapper">
-                               {this.props.children}
-                               </div>
-                               <div className="detail-close" onClick={onClose}>
-                               <i className="icon-close"></i>
-                               </div>
-                               </div>)
-                           }
-                               </Transition>
-                               }
+        >
+            {
+                (status) => (<div className={`detail fade ${status}`}
+                                  style={{display: this.state.detailVisible ? 'block' : 'none'}}>
+                    <div className="detail-wrapper">
+                        {this.props.children}
+                    </div>
+                    <div className="detail-close" onClick={onClose}>
+                        <i className="icon-close"></i>
+                    </div>
+                </div>)
+            }
+        </Transition>
+    }
 }
 
-    export default Mask
+export default Mask
 

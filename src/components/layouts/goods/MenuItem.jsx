@@ -25,8 +25,8 @@ class MenuItem extends React.Component {
     }
 
     render() {
-        const {menu, currentIndex, index}=this.props;
-        return <li className={`menu-item border-1px ${index == currentIndex ? 'current':''}`}>
+        const {menu, currentIndex, index, onClick}=this.props;
+        return <li className={`menu-item border-1px ${index == currentIndex ? 'current' : ''}`} onClick={onClick}>
                                 <span className="text">{menu.type > -1 && <span
                                     className={`icon ${this.supportClassType()[menu.type]}`}></span>}{menu.name}</span>
         </li>

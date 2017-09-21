@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import ReactDOM from 'react-dom'
 import './goods.less';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -44,8 +43,10 @@ class Goods extends React.Component {
         if (!deepEqual(prevProps.goods.goodsInfo, this.props.goods.goodsInfo)) {
             this.menuScroll && this.this.menuScroll.destroy();
             this.foodScroll && this.this.foodScroll.destroy();
-            this.listHeight=[];
-            this.menuScroll = new BScroll(this.menuWrapper, {});
+            this.listHeight = [];
+            this.menuScroll = new BScroll(this.menuWrapper, {
+                click: true
+            });
             this.foodScroll = new BScroll(this.foodWrapper, {
                 probeType: 3
             });
@@ -65,16 +66,20 @@ class Goods extends React.Component {
             for (let i = 0; i < this.listHeight.length; i++) {
                 let height1 = this.listHeight[i];
                 let height2 = this.listHeight[i + 1];
-                if (!height2 || (this.scrollY > height1 && this.scrollY < height2)) {
+                if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
                     this.setState({
                         currentIndex: i
-                    })
+                    });
+                    break;
                 }
             }
-            this.setState({
-                currentIndex: 0
-            })
         })
+    }
+
+    selectMenu=(i)=>{
+        let foodList = this.foodWrapper.getElementsByClassName('food-item-hook');
+        let info=foodList[i];
+        this.foodScroll&&this.foodScroll.scrollToElement(info,300);
     }
 
 
@@ -85,7 +90,8 @@ class Goods extends React.Component {
                 <ul>
                     {
                         _.map(goodsInfo, (good, i) => {
-                            return <MenuItem menu={good} key={i} currentIndex={this.state.currentIndex} index={i}/>
+                            return <MenuItem menu={good} key={i} currentIndex={this.state.currentIndex} index={i}
+                                             onClick={() => this.selectMenu(i)}/>
                         })
                     }
                 </ul>
