@@ -4,6 +4,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import CartControl from '../../common/cartControl'
 
 class FoodItem extends React.Component {
     constructor(props) {
@@ -14,8 +15,16 @@ class FoodItem extends React.Component {
         good: PropTypes.object
     }
 
+    getCount = (selectFoods, food) => {
+        let filterFoods = _.filter(selectFoods, (selectFood) => {
+            return selectFood.name == food.name
+        })
+        return filterFoods.length;
+
+    }
+
     render() {
-        const {good} = this.props;
+        const {good, addFood, removeFood, selectFoods} = this.props;
         return <li className="food-list food-item-hook">
             <h1 className="title">{good.name}</h1>
             <ul>
@@ -35,6 +44,11 @@ class FoodItem extends React.Component {
                                 <div className="price">
                                     <span className="now">{`￥${food.price}`}</span>
                                     {food.oldPrice && <span className="old">{`￥${food.oldPrice}`}</span>}
+                                </div>
+                                <div className="cart-wrapper">
+                                    <CartControl addCart={addFood.bind(null, food)}
+                                                 decCart={removeFood.bind(null, food)}
+                                                 count={this.getCount(selectFoods, food)}/>
                                 </div>
                             </div>
                         </li>

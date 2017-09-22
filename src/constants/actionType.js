@@ -6,7 +6,9 @@ const seller = {
 }
 
 const goods = {
-    "GET_GOODS": "GET_GOODS"
+    "GET_GOODS": "GET_GOODS",
+    "ADD_FOOD": "ADD_FOOD",
+    "REMOVE_FOOD": "REMOVE_FOOD"
 }
 
 const ratings = {

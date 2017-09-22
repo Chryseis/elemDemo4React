@@ -28,20 +28,22 @@
         width: 56px;
         padding: 0 12px;
         line-height: 14px;
-        .border-1px(rgba(7, 17, 27, .1));
-        &.current{
+        &.current {
           position: relative;
           z-index: 10;
           margin-top: -1px;
           background: #fff;
           font-weight: 700;
-          .border-none();
+          .text {
+            .border-none();
+          }
         }
         .text {
           display: table-cell;
           font-size: 12px;
           color: #000;
           vertical-align: middle;
+          .border-1px(rgba(7, 17, 27, .1));
           .icon {
             display: inline-block;
             width: 12px;
@@ -94,6 +96,7 @@
         }
         .content {
           flex: 1;
+          position: relative;
           .name {
             margin: 2px 0 8px 0;
             height: 14px;
@@ -129,7 +132,125 @@
               color: rgb(147, 153, 159);
             }
           }
+          .cart-wrapper{
+            position: absolute;
+            display: inline-block;
+            bottom: 0;
+            right: 0;
+          }
         }
+      }
+    }
+    .shopcart {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 50;
+      width: 100%;
+      .content {
+        display: flex;
+        height: 48px;
+        .content-left {
+          flex: 1;
+          background-color: #141d27;
+          .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 6px;
+            border-radius: 50%;
+            margin: 0 12px 0 12px;
+            top: -10px;
+            background-color: #141d27;
+            .logo {
+              display: inline-block;
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              background-color: #2b343c;
+              text-align: center;
+              line-height: 44px;
+              &.high-light {
+                background-color: rgb(0, 160, 220);
+                .icon-shopping_cart {
+                  color: #fff;
+                }
+              }
+              .icon-shopping_cart {
+                font-size: 24px;
+                color: #80858a;
+                vertical-align: middle;
+              }
+            }
+            .num {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 24px;
+              height: 16px;
+              line-height: 16px;
+              text-align: center;
+              border-radius: 16px;
+              font-size: 9px;
+              font-weight: 700;
+              color: #fff;
+              background-color: rgb(240, 20, 20);
+              box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
+            }
+          }
+          .price {
+            position: relative;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .4);
+            margin-top: 12px;
+            padding-right: 12px;
+            line-height: 24px;
+            box-sizing: border-box;
+            vertical-align: top;
+            &.high-light {
+              color: #fff;
+            }
+            &:after {
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: inline-block;
+              content: "";
+              width: 1px;
+              height: 100%;
+              background-color: rgba(255, 255, 255, .1);
+            }
+          }
+          .desc {
+            display: inline-block;
+            line-height: 48px;
+            padding-left: 12px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, .4);
+            vertical-align: top;
+          }
+        }
+        .content-right {
+          flex: 0 0 105px;
+          .pay {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .4);
+            text-align: center;
+            line-height: 48px;
+            background-color: #2b333b;
+            &.not-enough {
+              background-color: #2b333b;
+            }
+            &.enough {
+              background-color: #00b43c;
+              color: #fff;
+            }
+          }
+        }
+
       }
     }
   }

@@ -4,13 +4,31 @@
 import {goods as Action} from '../constants/actionType'
 
 const initialState = {
-    goodsInfo: []
+    goodsInfo: [],
+    selectFoods: []
 }
 
 const reducersMap = {
     [Action.GET_GOODS]: (state, action) => {
         return {
             goodsInfo: action.data
+        }
+    },
+    [Action.ADD_FOOD]: (state, action) => {
+        let selectFoods = _.cloneDeep(state.selectFoods);
+        selectFoods.push(action.selectFood);
+        return {
+            selectFoods
+        }
+    },
+    [Action.REMOVE_FOOD]: (state, action) => {
+        let selectFoods = _.cloneDeep(state.selectFoods);
+        let index = _.findIndex(selectFoods, (food) => {
+            return food.name == action.removeFood.name
+        })
+        selectFoods.splice(index, 1);
+        return {
+            selectFoods
         }
     }
 }

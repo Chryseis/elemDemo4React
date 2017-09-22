@@ -6,7 +6,6 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const appData = require('./data.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const timestamp = +new Date();
