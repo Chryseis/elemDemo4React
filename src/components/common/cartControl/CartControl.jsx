@@ -15,11 +15,17 @@ class CartControl extends React.Component {
     }
 
     render() {
-        const {count, addCart, decCart}=this.props;
+        const {count, addCart, decCart} = this.props;
         return <div className="cartcontrol">
-            {count > 0 && <div className="decrease icon-remove_circle_outline" onClick={decCart}></div>}
+            {count > 0 && <div className="dec icon-remove_circle_outline" onClick={(e) => {
+                e.stopPropagation();
+                decCart();
+            }}></div>}
             {count > 0 && <div className="count">{count}</div>}
-            <div className="add icon-add_circle" onClick={addCart}></div>
+            <div className="add icon-add_circle" onClick={(e) => {
+                e.stopPropagation();
+                addCart();
+            }}></div>
         </div>
     }
 }

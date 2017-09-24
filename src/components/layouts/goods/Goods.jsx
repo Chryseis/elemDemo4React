@@ -29,15 +29,16 @@ class Goods extends React.Component {
     }
 
     componentDidMount() {
+        console.log('componentDidMount')
         const {actions} = this.props;
         actions.getGoods();
         this.firstMounted = true;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (!deepEqual(nextProps.goods.selectFoods, this.props.goods.selectFoods)) {
+        if (!deepEqual(nextProps.goods, this.props.goods) || this.firstMounted) {
             return true;
-        } else if (this.state.currentIndex == nextState.currentIndex && this.scrollY != 0) {
+        } else if (this.state.currentIndex == nextState.currentIndex && this.scrollY > -1) {
             return false;
         }
         return true;
@@ -78,7 +79,7 @@ class Goods extends React.Component {
                     }, () => {
                         //todo
                     });
-                    break;
+                    return;
                 }
             }
         })
@@ -93,8 +94,8 @@ class Goods extends React.Component {
 
     render() {
         const {goodsInfo, selectFoods} = this.props.goods;
-        const {info}=this.props.seller;
-        const {actions}=this.props;
+        const {info} = this.props.seller;
+        const {actions} = this.props;
         return <div className="goods">
             <div className="menu-wrapper" ref={menuWrapper => this.menuWrapper = menuWrapper}>
                 <ul>
@@ -110,7 +111,8 @@ class Goods extends React.Component {
                 <ul>
                     {
                         _.map(goodsInfo, (good, i) => {
-                            return <FoodItem good={good} key={i} addFood={actions.addFood} removeFood={actions.removeFood} selectFoods={selectFoods}/>
+                            return <FoodItem good={good} key={i} addFood={actions.addFood}
+                                             removeFood={actions.removeFood} selectFoods={selectFoods}/>
                         })
                     }
                 </ul>
