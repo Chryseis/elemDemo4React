@@ -29,7 +29,6 @@ class Goods extends React.Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
         const {actions} = this.props;
         actions.getGoods();
         this.firstMounted = true;
