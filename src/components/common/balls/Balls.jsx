@@ -5,7 +5,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import './balls.less';
-import {TransitionGroup, CSSTransition}  from 'react-transition-group'
+import {TransitionGroup, CSSTransition}  from 'react-transition-group';
+import Ball from './Ball';
 
 class Balls extends React.Component {
     constructor(props) {
@@ -18,8 +19,20 @@ class Balls extends React.Component {
 
     add = (ball) => {
         this.setState(preState => {
+            console.log('add')
             return {
-                balls: preState.balls.concat(ball)
+                balls: preState.balls.concat(Object.assign(ball, {key: +new Date()}))
+            }
+        })
+    }
+
+    onClose = (key) => {
+        this.setState(preState => {
+            console.log('close')
+            return {
+                balls: preState.balls.filter((ball) => {
+                    return ball.key !== key;
+                })
             }
         })
     }
@@ -37,31 +50,45 @@ class Balls extends React.Component {
                             in={false}
                             key={i}
                             onEnter={(elem) => {
-                                elem.style.webkitTransform = `translate3d(${x}px,${y}px,0)`;
-                                elem.style.transform = `translate3d(${x}px,${y}px,0)`
+                                elem.style.webkitTransform = `translate3d(0,${y}px,0)`;
+                                elem.style.transform = `translate3d(0,${y}px,0)`
+                                let inner = elem.getElementsByClassName('inner')[0];
+                                inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+                                inner.style.transform = `translate3d(${x}px,0,0)`;
                             }
                             }
                             onEntering={(elem) => {
-                                elem.style.webkitTransform = `translate3d(${x}px,${y}px,0)`;
-                                elem.style.transform = `translate3d(${x}px,${y}px,0)`;
+                                elem.style.webkitTransform = `translate3d(0,${y}px,0)`;
+                                elem.style.transform = `translate3d(0,${y}px,0)`;
+                                let inner = elem.getElementsByClassName('inner')[0];
+                                inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+                                inner.style.transform = `translate3d(${x}px,0,0)`;
                             }
                             }
                             onEntered={(elem) => {
                                 elem.style.webkitTransform = `translate3d(0,0,0)`;
                                 elem.style.transform = `translate3d(0,0,0)`
+                                let inner = elem.getElementsByClassName('inner')[0];
+                                inner.style.webkitTransform = `translate3d(0,0,0)`;
+                                inner.style.transform = `translate3d(0,0,0)`;
                             }
                             }
                             onExit={(elem) => {
-                                elem.style.opacity = 0;
+                                elem.style.display = 'none'
                             }}
                             onExiting={(elem) => {
-                                elem.style.opacity = 0;
+                                elem.style.display = 'none'
                             }
+                            }
+                            onExited={
+                                (elem) => {
+                                    elem.style.display = 'none'
+                                }
                             }
                             timeout={400}
                             classNames="ball-drop"
                         >
-                            <div className="ball"></div>
+                            <Ball onClose={this.onClose.bind(this, ball.key)}/>
                         </CSSTransition>
                     })
                 }

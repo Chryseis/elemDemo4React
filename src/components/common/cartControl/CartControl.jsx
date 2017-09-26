@@ -18,15 +18,14 @@ class CartControl extends React.Component {
 
     render() {
         const {count, addCart, decCart} = this.props;
-        let i = 0;
         return <div className="cartcontrol">
             <Transition in={count > 0} timeout={{
                 enter: 300,
                 exit: 200
             }}>
                 {
-                    status => (<div className={`dec icon-remove_circle_outline move ${status}`} onClick={decCart}></div>
-                    )
+                    status => (
+                        <div className={`dec icon-remove_circle_outline move ${status}`} onClick={decCart}></div>)
                 }
             </Transition>
             <Transition in={count > 0} timeout={{
@@ -37,10 +36,10 @@ class CartControl extends React.Component {
                     status => (<div className={`count fade ${status}`}>{count > 0 && count}</div>)
                 }
             </Transition>
-            <div className="add icon-add_circle" onClick={() => {
+            <div className="add icon-add_circle" onClick={(e) => {
                 addCart();
-                addBall(this.addElem, {ball: 'ball', key: i++})
-            }} ref={add => this.addElem = add}></div>
+                addBall(e.target, {ball: 'ball'})
+            }}></div>
         </div>
     }
 }

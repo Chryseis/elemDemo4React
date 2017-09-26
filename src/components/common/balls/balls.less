@@ -1,12 +1,16 @@
 .ball {
-  position: fixed;
+  position: absolute;
   display: inline-block;
   z-index: 200;
   left: 32px;
   bottom: 22px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: rgb(0, 160, 220);
   transition: all .4s cubic-bezier(.49, -.29, .75, .41);
+  transform: translate3d(0,0,0);
+  .inner{
+    width: 16px;
+    height: 16px;
+    background-color: rgb(0, 160, 220);
+    border-radius: 50%;
+    transition: all .4s linear;
+  }
 }
