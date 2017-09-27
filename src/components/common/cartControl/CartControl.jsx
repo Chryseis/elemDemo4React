@@ -38,7 +38,7 @@ class CartControl extends React.Component {
             </Transition>
             <div className="add icon-add_circle" onClick={(e) => {
                 addCart();
-                addBall(e.target, {ball: 'ball'})
+                addBall(e.target, {ball: 'ball'});
             }}></div>
         </div>
     }

@@ -5,6 +5,7 @@ import Balls from './Balls';
 
 let ballInstance;
 let rect;
+let key = 1;
 
 
 function getInstance(dom) {
@@ -21,5 +22,6 @@ function getInstance(dom) {
 
 export default function addBall(dom, ball) {
     let instance = getInstance(dom);
-    instance.add(ball);
+    instance.add({ball: 'ball', key: key});
+    key++;
 }

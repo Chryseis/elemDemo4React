@@ -19,16 +19,17 @@ class Balls extends React.Component {
 
     add = (ball) => {
         this.setState(preState => {
-            console.log('add')
-            return {
-                balls: preState.balls.concat(Object.assign(ball, {key: +new Date()}))
+            const balls = preState.balls;
+            if (!balls.filter(v => v.key == ball.key).length) {
+                return {
+                    balls: preState.balls.concat(ball)
+                }
             }
         })
     }
 
     onClose = (key) => {
         this.setState(preState => {
-            console.log('close')
             return {
                 balls: preState.balls.filter((ball) => {
                     return ball.key !== key;
@@ -52,7 +53,8 @@ class Balls extends React.Component {
                             onEnter={(elem) => {
                                 elem.style.webkitTransform = `translate3d(0,${y}px,0)`;
                                 elem.style.transform = `translate3d(0,${y}px,0)`
-                                let inner = elem.getElementsByClassName('inner')[0];
+                                elem.style.opacity = 0;
+                                let inner = elem.firstChild;
                                 inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
                                 inner.style.transform = `translate3d(${x}px,0,0)`;
                             }
@@ -60,15 +62,17 @@ class Balls extends React.Component {
                             onEntering={(elem) => {
                                 elem.style.webkitTransform = `translate3d(0,${y}px,0)`;
                                 elem.style.transform = `translate3d(0,${y}px,0)`;
-                                let inner = elem.getElementsByClassName('inner')[0];
+                                elem.style.opacity = 1;
+                                let inner = elem.firstChild;
                                 inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
                                 inner.style.transform = `translate3d(${x}px,0,0)`;
                             }
                             }
                             onEntered={(elem) => {
                                 elem.style.webkitTransform = `translate3d(0,0,0)`;
-                                elem.style.transform = `translate3d(0,0,0)`
-                                let inner = elem.getElementsByClassName('inner')[0];
+                                elem.style.transform = `translate3d(0,0,0)`;
+                                elem.style.opacity = 0;
+                                let inner = elem.firstChild;
                                 inner.style.webkitTransform = `translate3d(0,0,0)`;
                                 inner.style.transform = `translate3d(0,0,0)`;
                             }
@@ -80,15 +84,14 @@ class Balls extends React.Component {
                                 elem.style.display = 'none'
                             }
                             }
-                            onExited={
-                                (elem) => {
-                                    elem.style.display = 'none'
-                                }
+                            onExited={(elem) => {
+                                elem.style.display = 'none'
+                            }
                             }
                             timeout={400}
                             classNames="ball-drop"
                         >
-                            <Ball onClose={this.onClose.bind(this, ball.key)}/>
+                            <Ball onClose={this.onClose.bind(this, ball.key)} index={ball.key}/>
                         </CSSTransition>
                     })
                 }
@@ -106,6 +109,9 @@ Balls.newIntstance = function (properties) {
     return {
         add(ball){
             balls.add(ball)
+        },
+        remove(key){
+            ball.onClose(key);
         },
         destroy() {
             ReactDOM.unmountComponentAtNode(div);
