@@ -13,12 +13,13 @@ class CartControl extends React.Component {
     }
 
     static defaultProps = {
-        count: 0
+        count: 0,
+        isBall: true
     }
 
     render() {
-        const {count, addCart, decCart} = this.props;
-        return <div className="cartcontrol">
+        const {count, addCart, decCart, isBall,style} = this.props;
+        return <div className="cartcontrol" style={style}>
             <Transition in={count > 0} timeout={{
                 enter: 300,
                 exit: 200
@@ -37,8 +38,8 @@ class CartControl extends React.Component {
                 }
             </Transition>
             <div className="add icon-add_circle" onClick={(e) => {
+                isBall && addBall(e.target, {ball: 'ball'});
                 addCart();
-                addBall(e.target, {ball: 'ball'});
             }}></div>
         </div>
     }

@@ -3,11 +3,15 @@
  */
 
 import React from 'react';
+import CartControl from '../../common/cartControl'
 
 class ShopCart extends React.Component {
     constructor(props) {
         super(props)
         this.price = 0;
+        this.state = {
+            shopcartVisible: false
+        }
     }
 
     totalPrice = (selectFoods) => {
@@ -39,11 +43,32 @@ class ShopCart extends React.Component {
         }
     }
 
+    groupBySelectFoods = (selectFoods) => {
+        let groupbyFoods = [];
+        _.forEach(selectFoods, (sfood) => {
+            let i = _.findIndex(groupbyFoods, gfood => gfood.name == sfood.name);
+            if (i > -1) {
+                groupbyFoods[i].count++;
+            } else {
+                groupbyFoods.push({
+                    name: sfood.name,
+                    count: 1,
+                    price: sfood.price
+                })
+            }
+        })
+        return groupbyFoods;
+    }
+
     render() {
-        const {seller, selectFoods}=this.props;
+        const {seller, selectFoods, addFood, removeFood}=this.props;
         return <div className="shopcart">
             <div className="content">
-                <div className="content-left">
+                <div className="content-left" onClick={() => this.setState((preState) => {
+                    return {
+                        shopcartVisible: !preState.shopcartVisible
+                    }
+                })}>
                     <div className="logo-wrapper">
                         <div className={`logo ${selectFoods.length > 0 ? 'high-light' : ''}`}>
                             <span className="icon-shopping_cart"></span>
@@ -59,6 +84,33 @@ class ShopCart extends React.Component {
                         {this.payDes(seller).des}
                     </div>
                 </div>
+            </div>
+            <div className="shopcart-list"
+                 style={{display: this.state.shopcartVisible && selectFoods.length > 0 ? 'block' : 'none'}}>
+                <div className="list-header clearfix">
+                    <h1 className="title">购物车</h1>
+                    <span className="empty">清空</span>
+                </div>
+                <div className="list-content">
+                    <ul>
+                        {
+                            _.map(this.groupBySelectFoods(selectFoods), (food, i) => {
+                                return <li className="food clearfix" key={i}>
+                                    <span className="name">{food.name}</span>
+                                    <div className="cart-control">
+                                        <span className="price">{`￥${food.count * food.price}`}</span>
+                                        <CartControl style={{verticalAlign: 'middle',marginLeft:'12px'}} count={food.count}
+                                                     addCart={addFood.bind(null, food)}
+                                                     decCart={removeFood.bind(null, food)}/>
+                                    </div>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div className="shopcart-mask"
+                 style={{display: this.state.shopcartVisible && selectFoods.length > 0 ? 'block' : 'none'}}>
             </div>
         </div>
     }

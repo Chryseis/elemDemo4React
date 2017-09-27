@@ -26,6 +26,7 @@ class Balls extends React.Component {
                 }
             }
         })
+
     }
 
     onClose = (key) => {

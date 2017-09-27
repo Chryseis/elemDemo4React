@@ -116,7 +116,8 @@ class Goods extends React.Component {
                     }
                 </ul>
             </div>
-            <ShopCart seller={info} selectFoods={selectFoods}/>
+            <ShopCart seller={info} selectFoods={selectFoods} addFood={actions.addFood}
+                      removeFood={actions.removeFood}/>
         </div>
     }
 }
