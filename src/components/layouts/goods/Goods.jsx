@@ -38,8 +38,8 @@ class Goods extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if(!deepEqual(nextState,this.state)){
-          return true;
+        if (!deepEqual(nextState, this.state)) {
+            return true;
         } else if (!deepEqual(nextProps.goods, this.props.goods) || this.firstMounted) {
             return true;
         } else if (this.state.currentIndex == nextState.currentIndex && this.scrollY > -1) {
@@ -95,7 +95,7 @@ class Goods extends React.Component {
         this.foodScroll && this.foodScroll.scrollToElement(info, 300, 0, 2);
     }
 
-    toggle = (good) => {
+    toggle = (good, callback) => {
         this.setState(preState => {
             if (!preState.visible) {
                 return {
@@ -107,7 +107,7 @@ class Goods extends React.Component {
                     visible: false
                 }
             }
-        })
+        }, () => callback && callback())
     }
 
 

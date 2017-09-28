@@ -15,10 +15,17 @@ class Food extends React.Component {
     }
 
     render() {
-        const {visible,good,onClose}=this.props;
+        const {visible, good, onClose, removeMask}=this.props;
         return <Transition in={visible} appear timeout={400}>
             {status => (<div className={`food toggle ${status}`}>
-                <div className="food-image" onClick={onClose}>xxx</div>
+                <div className="food-image" onClick={() => {
+                    onClose(null, () => {
+                        setTimeout(() => {
+                            removeMask();
+                        }, 800)
+                    });
+                }}>xxx
+                </div>
                 <div className="food-detail">
                     <div className="food-name"></div>
                     <div className="food-rating"></div>
