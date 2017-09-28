@@ -26,7 +26,10 @@ class CartControl extends React.Component {
             }}>
                 {
                     status => (
-                        <div className={`dec icon-remove_circle_outline move ${status}`} onClick={decCart}></div>)
+                        <div className={`dec icon-remove_circle_outline move ${status}`} onClick={(e)=>{
+                            e.stopPropagation();
+                            decCart();
+                        }}></div>)
                 }
             </Transition>
             <Transition in={count > 0} timeout={{
@@ -38,6 +41,7 @@ class CartControl extends React.Component {
                 }
             </Transition>
             <div className="add icon-add_circle" onClick={(e) => {
+                e.stopPropagation();
                 isBall && addBall(e.target, {ball: 'ball'});
                 addCart();
             }}></div>

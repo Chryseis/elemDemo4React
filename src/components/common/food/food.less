@@ -1,0 +1,22 @@
+.food {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  bottom: 48px;
+  background-color: #fff;
+  z-index: 40;
+  &.toggle {
+    transition: all .4s ease-in-out;
+    &.entering, &.exited {
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(100%, 0, 0);
+    }
+    &.entered, &.exiting {
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}

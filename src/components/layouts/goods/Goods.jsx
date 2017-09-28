@@ -12,6 +12,7 @@ import FoodItem from './FoodItem';
 import BScroll from 'better-scroll'
 import deepEqual from 'deep-equal'
 import ShopCart from './ShopCart'
+import Food from '../../common/food'
 
 @connect(state => ({
     seller: state.seller,
@@ -24,7 +25,9 @@ class Goods extends React.Component {
         super(props);
         this.scrollY = 0;
         this.state = {
-            currentIndex: 0
+            currentIndex: 0,
+            visible: false,
+            good: {}
         }
     }
 
@@ -35,7 +38,9 @@ class Goods extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (!deepEqual(nextProps.goods, this.props.goods) || this.firstMounted) {
+        if(!deepEqual(nextState,this.state)){
+          return true;
+        } else if (!deepEqual(nextProps.goods, this.props.goods) || this.firstMounted) {
             return true;
         } else if (this.state.currentIndex == nextState.currentIndex && this.scrollY > -1) {
             return false;
@@ -90,6 +95,21 @@ class Goods extends React.Component {
         this.foodScroll && this.foodScroll.scrollToElement(info, 300, 0, 2);
     }
 
+    toggle = (good) => {
+        this.setState(preState => {
+            if (!preState.visible) {
+                return {
+                    visible: true,
+                    good
+                }
+            } else {
+                return {
+                    visible: false
+                }
+            }
+        })
+    }
+
 
     render() {
         const {goodsInfo, selectFoods} = this.props.goods;
@@ -111,13 +131,15 @@ class Goods extends React.Component {
                     {
                         _.map(goodsInfo, (good, i) => {
                             return <FoodItem good={good} key={i} addFood={actions.addFood}
-                                             removeFood={actions.removeFood} selectFoods={selectFoods}/>
+                                             removeFood={actions.removeFood} selectFoods={selectFoods}
+                                             toggle={::this.toggle}/>
                         })
                     }
                 </ul>
             </div>
             <ShopCart seller={info} selectFoods={selectFoods} addFood={actions.addFood}
                       removeFood={actions.removeFood} clearFoods={actions.clearFoods}/>
+            <Food visible={this.state.visible} good={this.state.good} onClose={::this.toggle}/>
         </div>
     }
 }

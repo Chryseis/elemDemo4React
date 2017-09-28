@@ -24,13 +24,16 @@ class FoodItem extends React.Component {
     }
 
     render() {
-        const {good, addFood, removeFood, selectFoods} = this.props;
+        const {good, addFood, removeFood, selectFoods, toggle} = this.props;
         return <li className="food-list food-item-hook">
             <h1 className="title">{good.name}</h1>
             <ul>
                 {
                     _.map(good.foods, (food, i) => {
-                        return <li className="food-item border-1px" key={i}>
+                        return <li className="food-item border-1px" key={i} onClick={(e) =>{
+                            e.stopPropagation();
+                            toggle(food);
+                        }}>
                             <div className="icon">
                                 <img width={57} height={57} src={food.icon}/>
                             </div>
