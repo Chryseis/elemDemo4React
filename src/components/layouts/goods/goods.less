@@ -263,21 +263,13 @@
         transform: translateY(-100%);
         &.toggle{
           transition: all .3s ease-in-out;
-          &.entering{
+          &.entering,&.exited{
             opacity: 0;
-            transform:translateY(0);
+            transform:translate3d(0,0,0);
           }
-          &.entered{
+          &.entered,&.exiting{
             opacity: 1;
-            transform:translateY(-100%);
-          }
-          &.exiting{
-            opacity: 1;
-            transform:translateY(-100%);
-          }
-          &.exited{
-            opacity: 0;
-            transform:translateY(0);
+            transform:translate3d(0,-100%,0);
           }
         }
         .list-header {
@@ -302,6 +294,8 @@
         .list-content {
           padding: 0 18px;
           background: #fff;
+          overflow-y: auto;
+          max-height: 218px;
           .food {
             width: 100%;
             .name {

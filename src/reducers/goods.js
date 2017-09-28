@@ -30,6 +30,11 @@ const reducersMap = {
         return {
             selectFoods
         }
+    },
+    [Action.CLEAR_FOODS]:(state,action)=>{
+        return {
+            selectFoods:[]
+        }
     }
 }
 

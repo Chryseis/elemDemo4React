@@ -73,8 +73,9 @@ class ShopCart extends React.Component {
         }
     }
 
+
     render() {
-        const {seller, selectFoods, addFood, removeFood}=this.props;
+        const {seller, selectFoods, addFood, removeFood, clearFoods}=this.props;
         return <div className="shopcart">
             <div className="content">
                 <div className="content-left" onClick={() => this.setState((preState) => {
@@ -98,7 +99,7 @@ class ShopCart extends React.Component {
                     </div>
                 </div>
             </div>
-            <Transition in={this.state.shopcartVisible && selectFoods.length > 0} timeout={400}
+            <Transition in={this.state.shopcartVisible && selectFoods.length > 0 } timeout={400}
                         onEnter={() => {
                             this.setState({
                                 showVisible: true
@@ -116,7 +117,7 @@ class ShopCart extends React.Component {
                                  style={{display: this.state.showVisible > 0 ? 'block' : 'none'}}>
                     <div className="list-header clearfix">
                         <h1 className="title">购物车</h1>
-                        <span className="empty">清空</span>
+                        <span className="empty" onClick={() => clearFoods()}>清空</span>
                     </div>
                     <div className="list-content">
                         <ul>
@@ -130,7 +131,13 @@ class ShopCart extends React.Component {
                                                          count={food.count}
                                                          addCart={addFood.bind(null, food)}
                                                          decCart={() => {
-                                                             removeFood(food);
+                                                             if (selectFoods.length == 1) {
+                                                                 this.setState({
+                                                                     shopcartVisible: false
+                                                                 }, () => removeFood(food))
+                                                             } else {
+                                                                 removeFood(food)
+                                                             }
                                                          }}/>
                                         </div>
                                     </li>

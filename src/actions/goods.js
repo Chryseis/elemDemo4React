@@ -28,8 +28,15 @@ export function addFood(selectFood) {
 }
 
 export function removeFood(removeFood) {
-    return{
-        type:Action.REMOVE_FOOD,
+    return {
+        type: Action.REMOVE_FOOD,
         removeFood
     }
+}
+
+export function clearFoods() {
+    return {
+        type: Action.CLEAR_FOODS
+    }
+
 }
