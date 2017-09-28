@@ -3,14 +3,16 @@
  */
 
 import React from 'react';
-import CartControl from '../../common/cartControl'
+import CartControl from '../../common/cartControl';
+import {Transition} from 'react-transition-group';
 
 class ShopCart extends React.Component {
     constructor(props) {
         super(props)
         this.price = 0;
         this.state = {
-            shopcartVisible: false
+            shopcartVisible: false,
+            showVisible: false
         }
     }
 
@@ -60,6 +62,17 @@ class ShopCart extends React.Component {
         return groupbyFoods;
     }
 
+    componentWillReceiveProps(nextProps) {
+        const {selectFoods}=nextProps;
+        if (!selectFoods.length) {
+            this.setState((preState) => {
+                return {
+                    shopcartVisible: false
+                }
+            })
+        }
+    }
+
     render() {
         const {seller, selectFoods, addFood, removeFood}=this.props;
         return <div className="shopcart">
@@ -85,33 +98,54 @@ class ShopCart extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="shopcart-list"
-                 style={{display: this.state.shopcartVisible && selectFoods.length > 0 ? 'block' : 'none'}}>
-                <div className="list-header clearfix">
-                    <h1 className="title">购物车</h1>
-                    <span className="empty">清空</span>
-                </div>
-                <div className="list-content">
-                    <ul>
-                        {
-                            _.map(this.groupBySelectFoods(selectFoods), (food, i) => {
-                                return <li className="food clearfix" key={i}>
-                                    <span className="name">{food.name}</span>
-                                    <div className="cart-control">
-                                        <span className="price">{`￥${food.count * food.price}`}</span>
-                                        <CartControl style={{verticalAlign: 'middle',marginLeft:'12px'}} count={food.count}
-                                                     addCart={addFood.bind(null, food)}
-                                                     decCart={removeFood.bind(null, food)}/>
-                                    </div>
-                                </li>
+            <Transition in={this.state.shopcartVisible && selectFoods.length > 0} timeout={400}
+                        onEnter={() => {
+                            this.setState({
+                                showVisible: true
                             })
-                        }
-                    </ul>
-                </div>
-            </div>
-            <div className="shopcart-mask"
-                 style={{display: this.state.shopcartVisible && selectFoods.length > 0 ? 'block' : 'none'}}>
-            </div>
+                        }}
+                        onExited={() => {
+                            setTimeout(() => {
+                                this.setState({
+                                    showVisible: false
+                                })
+                            }, 400)
+                        }}
+            >
+                {status => (<div className={`shopcart-list toggle ${status}`}
+                                 style={{display: this.state.showVisible > 0 ? 'block' : 'none'}}>
+                    <div className="list-header clearfix">
+                        <h1 className="title">购物车</h1>
+                        <span className="empty">清空</span>
+                    </div>
+                    <div className="list-content">
+                        <ul>
+                            {
+                                _.map(this.groupBySelectFoods(selectFoods), (food, i) => {
+                                    return <li className="food clearfix" key={i}>
+                                        <span className="name">{food.name}</span>
+                                        <div className="cart-control">
+                                            <span className="price">{`￥${food.count * food.price}`}</span>
+                                            <CartControl style={{verticalAlign: 'middle', marginLeft: '12px'}}
+                                                         count={food.count}
+                                                         addCart={addFood.bind(null, food)}
+                                                         decCart={() => {
+                                                             removeFood(food);
+                                                         }}/>
+                                        </div>
+                                    </li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>)}
+            </Transition>
+            <Transition in={this.state.shopcartVisible && selectFoods.length > 0} timeout={400}>
+                {
+                    status => <div className={`shopcart-mask fade ${status}`}>
+                    </div>
+                }
+            </Transition>
         </div>
     }
 }
