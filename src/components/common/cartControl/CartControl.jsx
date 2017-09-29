@@ -14,11 +14,12 @@ class CartControl extends React.Component {
 
     static defaultProps = {
         count: 0,
-        isBall: true
+        isBall: true,
+        type: 1
     }
 
     render() {
-        const {count, addCart, decCart, isBall,style} = this.props;
+        const {count, addCart, decCart, isBall, style, type} = this.props;
         return <div className="cartcontrol" style={style}>
             <Transition in={count > 0} timeout={{
                 enter: 300,
@@ -26,7 +27,7 @@ class CartControl extends React.Component {
             }}>
                 {
                     status => (
-                        <div className={`dec icon-remove_circle_outline move ${status}`} onClick={(e)=>{
+                        <div className={`dec icon-remove_circle_outline move ${status}`} onClick={(e) => {
                             e.stopPropagation();
                             decCart();
                         }}></div>)
@@ -40,11 +41,21 @@ class CartControl extends React.Component {
                     status => (<div className={`count fade ${status}`}>{count > 0 && count}</div>)
                 }
             </Transition>
-            <div className="add icon-add_circle" onClick={(e) => {
-                e.stopPropagation();
-                isBall && addBall(e.target, {ball: 'ball'});
-                addCart();
-            }}></div>
+            {
+                (type == 1 || count > 0) && <div className="add icon-add_circle" onClick={(e) => {
+                    e.stopPropagation();
+                    isBall && addBall(e.target, {ball: 'ball'});
+                    addCart();
+                }}></div>
+            }
+            {
+                (type == 2 && count == 0) && <div className="add-text" onClick={(e) => {
+                    e.stopPropagation();
+                    isBall && addBall(e.target, {ball: 'ball'});
+                    addCart();
+                }}>加入购物车</div>
+            }
+
         </div>
     }
 }

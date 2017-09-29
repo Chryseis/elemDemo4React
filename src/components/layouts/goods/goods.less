@@ -261,15 +261,15 @@
         left: 0;
         overflow: hidden;
         transform: translateY(-100%);
-        &.toggle{
+        &.toggle {
           transition: all .3s ease-in-out;
-          &.entering,&.exited{
+          &.entering, &.exited {
             opacity: 0;
-            transform:translate3d(0,0,0);
+            transform: translate3d(0, 0, 0);
           }
-          &.entered,&.exiting{
+          &.entered, &.exiting {
             opacity: 1;
-            transform:translate3d(0,-100%,0);
+            transform: translate3d(0, -100%, 0);
           }
         }
         .list-header {
@@ -278,6 +278,7 @@
           background: #f3f5f7;
           line-height: 40px;
           padding: 0 18px;
+          border-bottom: 1px solid rgba(7, 17, 27, .1);
           box-sizing: border-box;
           .title {
             float: left;
@@ -297,16 +298,24 @@
           overflow-y: auto;
           max-height: 218px;
           .food {
+            position: relative;
             width: 100%;
+            height: 48px;
+            z-index: 40;
+            .border-1px(rgba(7, 17, 27, .1));
             .name {
-              float: left;
+              position: absolute;
+              top: 0;
+              left: 0;
               font-size: 14px;
               color: rgb(7, 17, 27);
               line-height: 48px;
             }
-            .cart-control{
-              float: right;
-              .price{
+            .cart-control {
+              position: absolute;
+              top: 0;
+              right: 0;
+              .price {
                 line-height: 48px;
               }
             }
@@ -322,13 +331,13 @@
         z-index: -2;
         background-color: rgba(7, 17, 27, .6);
         transition: all .4s ease-in-out;
-        &.fade{
-          &.entering,&.exited{
+        &.fade {
+          &.entering, &.exited {
             opacity: 0;
             background-color: rgba(7, 17, 27, 0);
             visibility: hidden;
           }
-          &.entered,&.exiting{
+          &.entered, &.exiting {
             opacity: 1;
             background-color: rgba(7, 17, 27, .6);
             visibility: visible;

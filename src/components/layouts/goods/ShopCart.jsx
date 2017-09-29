@@ -123,7 +123,7 @@ class ShopCart extends React.Component {
                         <ul>
                             {
                                 _.map(this.groupBySelectFoods(selectFoods), (food, i) => {
-                                    return <li className="food clearfix" key={i}>
+                                    return <li className="food border-1px" key={i}>
                                         <span className="name">{food.name}</span>
                                         <div className="cart-control">
                                             <span className="price">{`￥${food.count * food.price}`}</span>

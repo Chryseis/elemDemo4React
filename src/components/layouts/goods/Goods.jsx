@@ -27,7 +27,7 @@ class Goods extends React.Component {
         this.state = {
             currentIndex: 0,
             visible: false,
-            good: {}
+            food: {}
         }
     }
 
@@ -95,12 +95,12 @@ class Goods extends React.Component {
         this.foodScroll && this.foodScroll.scrollToElement(info, 300, 0, 2);
     }
 
-    toggle = (good, callback) => {
+    toggle = (food, callback) => {
         this.setState(preState => {
             if (!preState.visible) {
                 return {
                     visible: true,
-                    good
+                    food
                 }
             } else {
                 return {
@@ -139,7 +139,8 @@ class Goods extends React.Component {
             </div>
             <ShopCart seller={info} selectFoods={selectFoods} addFood={actions.addFood}
                       removeFood={actions.removeFood} clearFoods={actions.clearFoods}/>
-            <Food visible={this.state.visible} good={this.state.good} onClose={::this.toggle}/>
+            <Food visible={this.state.visible} food={this.state.food} onClose={::this.toggle} addFood={actions.addFood}
+                  removeFood={actions.removeFood} selectFoods={selectFoods}/>
         </div>
     }
 }
