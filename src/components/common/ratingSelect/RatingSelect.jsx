@@ -59,7 +59,7 @@ class RatingSelect extends React.Component {
                 <div className={`only-see-content ${on ? 'on' : ''}`.trim()} onClick={() => this.setState(preState => {
                         return {
                             on: !preState.on,
-                            filterRatings: preState.type !== 2 ? food.ratings.filter(r => r.rateType == preState.type && (!preState.on ? r.text !== '' : true)) : food.ratings.filter(r => !preState.on ? r.text !== '' :true)
+                            filterRatings: preState.type !== 2 ? food.ratings.filter(r => r.rateType == preState.type && (!preState.on ? r.text !== '' : true)) : food.ratings.filter(r => !preState.on ? r.text !== '' : true)
                         }
                     }
                 )}>

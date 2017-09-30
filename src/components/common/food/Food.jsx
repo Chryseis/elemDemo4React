@@ -22,6 +22,9 @@ const options = {
 class Food extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            canVerticallyScroll: null
+        }
     }
 
     getCount = (selectFoods, food) => {
@@ -36,7 +39,12 @@ class Food extends React.Component {
         return <Transition in={visible} appear timeout={400}>
             {status => (
                 <div className={`food-slider slider ${status}`}>
-                    <ReactIScroll iScroll={iScroll} options={options}>
+                    <ReactIScroll iScroll={iScroll} options={options} onRefresh={(iScrollInstance) => {
+                        let hasVerticalScroll = iScrollInstance.y;
+                        if (this.state.canVerticallyScroll != hasVerticalScroll) {
+                            this.setState({canVerticallyScroll: hasVerticalScroll})
+                        }
+                    }}>
                         <div>
                             <div className="food-image" style={{backgroundImage: `url(${food.image})`}}>
                                 <i className="icon-keyboard_arrow_right" onClick={() => {
