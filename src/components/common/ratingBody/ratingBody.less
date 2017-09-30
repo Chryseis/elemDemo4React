@@ -1,0 +1,56 @@
+@import "../../../common/css/mixin";
+
+.rating-body {
+  padding: 0 18px;
+  background-color: #fff;
+  border-top: 1px solid rgba(7, 17, 27, .1);
+  .rating-item {
+    padding: 16px 0;
+    .border-1px(rgba(7,17,27,.1));
+    .title {
+      margin-bottom: 6px;
+      .time {
+        float: left;
+        font-size: 10px;
+        color: rgb(147, 153, 159);
+        line-height: 12px;
+      }
+      .user {
+        float: right;
+        font-size: 10px;
+        color: rgb(147, 153, 159);
+        .ic-card {
+          margin-right: 6px;
+          line-height: 12px;
+        }
+        .avatar {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          vertical-align: top;
+        }
+      }
+    }
+    .content {
+      .icon {
+        margin-right: 4px;
+        font-size: 12px;
+        line-height: 24px;
+        &.icon-thumb_up{
+          color: rgb(0, 160, 220);
+        }
+        &.icon-thumb_down{
+          color: rgb(147, 153, 159);
+        }
+      }
+      .text {
+        display: inline-block;
+        font-size: 12px;
+        color: rgb(7, 17, 27);
+        line-height: 24px;
+        vertical-align: middle;
+        .ellipsis();
+      }
+    }
+  }
+}

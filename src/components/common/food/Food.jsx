@@ -9,11 +9,13 @@ import {Transition} from 'react-transition-group';
 import CartControl from '../../common/cartControl';
 import ReactIScroll from 'react-iscroll';
 import iScroll from 'iscroll';
+import RatingSelect from '../ratingSelect';
+import RatingBody from '../ratingBody'
 
 const options = {
     fadeScrollbars: true,
-    click:true,
-    taps:true
+    click: true,
+    taps: true
 }
 
 @createContainer
@@ -27,7 +29,6 @@ class Food extends React.Component {
             return selectFood.name == food.name
         })
         return filterFoods.length;
-
     }
 
     render() {
@@ -66,22 +67,9 @@ class Food extends React.Component {
                             <div className="food-evalute">
                                 <h1 className="title">商品评价</h1>
                             </div>
-                            <div className="rating-select">
-                                <div className="rating-header">
-                                    <ul className="tab-list">
-                                        <li className="tab blue">全部<span className="count"></span></li>
-                                        <li className="tab azure">推荐<span className="count"></span></li>
-                                        <li className="tab gray">吐槽<span className="count"></span></li>
-                                    </ul>
-                                    <div className="line border-1px"></div>
-                                    <div className="only-see-content">
-                                        <i className="icon-check_circle" />
-                                        <span className="text">只看有内容的评价</span>
-                                    </div>
-                                </div>
-                                <div className="rating-body">
-                                </div>
-                            </div>
+                            <RatingSelect food={food}>
+                                <RatingBody />
+                            </RatingSelect>
                         </div>
                     </ReactIScroll>
                 </div>

@@ -10,16 +10,14 @@ class Ball extends React.Component {
     }
 
     componentDidMount() {
-        const {onClose, index}=this.props;
-        // console.log(index,'componentDidMount')
+        // const {onClose, index}=this.props;
         // this.closeTimer = setTimeout(() => {
-        //     //clearTimeout(this.closeTimer);
         //     onClose();
-        // }, 1000)
+        // }, 5000)
     }
 
     componentWillUnmount() {
-        // clearTimeout(this.closeTimer);
+       // clearTimeout(this.closeTimer);
     }
 
     render() {
