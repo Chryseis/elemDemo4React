@@ -12,7 +12,7 @@ import FoodItem from './FoodItem';
 import BScroll from 'better-scroll'
 import deepEqual from 'deep-equal'
 import ShopCart from './ShopCart'
-import Food from '../../common/food'
+import Food from '../../common/food';
 
 @connect(state => ({
     seller: state.seller,

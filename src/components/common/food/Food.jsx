@@ -3,19 +3,18 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom'
 import './food.less';
 import createContainer from '../../../common/js/createContainer';
 import {Transition} from 'react-transition-group';
 import CartControl from '../../common/cartControl';
-import ReactIScroll from 'react-iscroll';
-import iScroll from 'iscroll';
 import RatingSelect from '../ratingSelect';
-import RatingBody from '../ratingBody'
+import RatingBody from '../ratingBody';
+import bScroll from 'better-scroll';
+import ReactBScroll from '../scrollbar';
 
 const options = {
-    fadeScrollbars: true,
-    click: true,
-    taps: true
+    click: true
 }
 
 @createContainer
@@ -23,8 +22,10 @@ class Food extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            canVerticallyScroll: null
+            canVerticallyScroll: null,
+            height: true
         }
+        this.ratingHeight = 0;
     }
 
     getCount = (selectFoods, food) => {
@@ -34,12 +35,23 @@ class Food extends React.Component {
         return filterFoods.length;
     }
 
+    changeHeight = () => {
+        let ratingHeight = ReactDOM.findDOMNode(this.rating).scrollHeight;
+        if (this.ratingHeight !== ratingHeight) {
+            this.setState(preState => {
+                return {
+                    height: preState.height
+                }
+            }, () => this.ratingHeight = ratingHeight)
+        }
+    }
+
     render() {
-        const {visible, food, onClose, removeMask, addFood, removeFood, selectFoods}=this.props;
+        const {visible, food, onClose, removeMask, addFood, removeFood, selectFoods} = this.props;
         return <Transition in={visible} appear timeout={400}>
             {status => (
                 <div className={`food-slider slider ${status}`}>
-                    <ReactIScroll iScroll={iScroll} options={options} onRefresh={(iScrollInstance) => {
+                    <ReactBScroll bScroll={bScroll} options={options} onRefresh={(iScrollInstance) => {
                         let hasVerticalScroll = iScrollInstance.y;
                         if (this.state.canVerticallyScroll != hasVerticalScroll) {
                             this.setState({canVerticallyScroll: hasVerticalScroll})
@@ -75,11 +87,12 @@ class Food extends React.Component {
                             <div className="food-evalute">
                                 <h1 className="title">商品评价</h1>
                             </div>
-                            <RatingSelect food={food}>
+                            <RatingSelect food={food} ref={rating => this.rating = rating}
+                                          changeHeight={::this.changeHeight}>
                                 <RatingBody />
                             </RatingSelect>
                         </div>
-                    </ReactIScroll>
+                    </ReactBScroll>
                 </div>
             )}
         </Transition>

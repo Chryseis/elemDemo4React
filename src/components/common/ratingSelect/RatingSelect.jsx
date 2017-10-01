@@ -25,8 +25,8 @@ class RatingSelect extends React.Component {
     }
 
     render() {
-        const {selectTypeName, food}=this.props;
-        const {type, on} =this.state;
+        const {selectTypeName, food, changeHeight} = this.props;
+        const {type, on} = this.state;
         return <div className="rating-select">
             <div className="rating-header">
                 <ul className="tab-list">
@@ -36,7 +36,7 @@ class RatingSelect extends React.Component {
                                 type: 2,
                                 filterRatings: food.ratings.filter(r => (preState.on ? r.text !== '' : true))
                             }
-                        })}>{selectTypeName.all}<span
+                        }, () => changeHeight())}>{selectTypeName.all}<span
                         className="count">{food.ratings.length}</span></li>
                     <li className={`tab azure ${type == 0 ? 'active' : ''}`.trim()}
                         onClick={() => this.setState(preState => {
@@ -44,7 +44,7 @@ class RatingSelect extends React.Component {
                                 type: 0,
                                 filterRatings: food.ratings.filter(r => r.rateType == 0 && (preState.on ? r.text !== '' : true))
                             }
-                        })}>{selectTypeName.good}<span
+                        }, () => changeHeight())}>{selectTypeName.good}<span
                         className="count">{food.ratings.filter(r => r.rateType == 0).length}</span></li>
                     <li className={`tab gray ${type == 1 ? 'active' : ''}`.trim()}
                         onClick={() => this.setState(preState => {
@@ -52,7 +52,7 @@ class RatingSelect extends React.Component {
                                 type: 1,
                                 filterRatings: food.ratings.filter(r => r.rateType == 1 && (preState.on ? r.text !== '' : true))
                             }
-                        })}>{selectTypeName.bad}<span
+                        }, () => changeHeight())}>{selectTypeName.bad}<span
                         className="count">{food.ratings.filter(r => r.rateType == 1).length}</span></li>
                 </ul>
                 <div className="line border-1px"></div>
@@ -61,7 +61,7 @@ class RatingSelect extends React.Component {
                             on: !preState.on,
                             filterRatings: preState.type !== 2 ? food.ratings.filter(r => r.rateType == preState.type && (!preState.on ? r.text !== '' : true)) : food.ratings.filter(r => !preState.on ? r.text !== '' : true)
                         }
-                    }
+                    }, () => changeHeight()
                 )}>
                     <i className="icon-check_circle"/>
                     <span className="text">只看有内容的评价</span>
