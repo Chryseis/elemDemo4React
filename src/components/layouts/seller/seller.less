@@ -1,0 +1,62 @@
+@import "../../../common/css/mixin";
+
+.seller {
+  position: absolute;
+  top: 174px;
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    top: 199px;
+  }
+  bottom: 46px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f3f5f7;
+  .seller-info {
+    padding: 18px;
+    background: #fff;
+    border-bottom: 1px solid rgba(7, 17, 27, .1);
+    margin-bottom: 16px;
+    .name {
+      font-size: 14px;
+      color: rgb(7, 17, 27);
+      line-height: 14px;
+      margin-bottom: 8px;
+    }
+    .rating-wrapper {
+      padding-bottom: 18px;
+      .border-1px(rgba(7, 17, 27, .1));
+      .count {
+        margin-left: 8px;
+        font-size: 10px;
+        color: rgb(77, 85, 93);
+        line-height: 18px;
+        vertical-align: top;
+      }
+    }
+    .desc {
+      padding-top: 18px;
+      display: flex;
+      .lab {
+        flex: 1;
+        text-align: center;
+        border-right: 1px solid rgba(7,17,27,.1);
+        &:last-child{
+          border-right: none;
+        }
+        .title {
+          font-size: 10px;
+          color: rgb(147, 153, 159);
+          line-height: 10px;
+          margin-bottom: 4px;
+        }
+        .text {
+          font-size: 24px;
+          color: rgb(7, 17, 27);
+          line-height: 24px;
+          .unit{
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
