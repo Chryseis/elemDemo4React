@@ -1,0 +1,77 @@
+@import "../../../common/css/mixin";
+
+.rating2-item {
+  display: flex;
+  padding: 18px 0;
+  .border-1px(rgba(7, 17, 27, .1));
+  .avatar {
+    flex: 0 0 28px;
+    img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+    }
+  }
+  .desc {
+    flex: 1;
+    padding-left: 12px;
+    .info {
+      .name {
+        float: left;
+        font-size: 10px;
+        color: rgb(7, 17, 27);
+        line-height: 12px;
+        margin-bottom: 4px;
+      }
+      .time{
+        float: right;
+        font-size: 10px;
+        font-weight: 200;
+        color:rgb(147,153,159);
+        line-height: 12px;
+      }
+    }
+    .level {
+      margin-bottom: 6px;
+      font-size: 0;
+      .delivery-time {
+        margin-left: 6px;
+        font-size: 10px;
+        font-weight: 200;
+        color: rgb(147, 153, 159);
+        line-height: 12px;
+      }
+    }
+    .text {
+      font-size: 12px;
+      color: rgb(7, 17, 27);
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+    .recommend {
+      font-size: 0;
+      .icon {
+        font-size: 12px;
+        line-height: 16px;
+        &.icon-thumb_up {
+          color: rgb(0, 160, 220);
+        }
+        &.icon-thumb_down {
+          color: rgb(183, 187, 191);
+        }
+      }
+      .tag {
+        display: inline-block;
+        padding: 0 6px;
+        margin-left: 8px;
+        margin-bottom: 2px;
+        border: 1px solid rgba(7, 17, 27, .1);
+        border-radius: 2px;
+        font-size: 9px;
+        color: rgb(147, 153, 159);
+        line-height: 16px;
+        vertical-align: top;
+      }
+    }
+  }
+}

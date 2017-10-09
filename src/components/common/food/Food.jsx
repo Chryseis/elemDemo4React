@@ -87,7 +87,7 @@ class Food extends React.Component {
                             <div className="food-evalute">
                                 <h1 className="title">商品评价</h1>
                             </div>
-                            <RatingSelect food={food} ref={rating => this.rating = rating}
+                            <RatingSelect ratings={food.ratings} ref={rating => this.rating = rating}
                                           changeHeight={::this.changeHeight}>
                                 <RatingBody />
                             </RatingSelect>

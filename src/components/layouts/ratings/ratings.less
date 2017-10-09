@@ -1,0 +1,75 @@
+.ratings {
+  position: absolute;
+  top: 174px;
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    top: 199px;
+  }
+  bottom: 46px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #f3f5f7;
+  .content-wrapper {
+    .seller-info {
+      padding: 18px 0;
+      margin-bottom:16px ;
+      background-color: #fff;
+      border-bottom: 1px solid rgba(7, 17, 27, .1);
+      .left {
+        float: left;
+        width: 138px;
+        border-right: 1px solid rgba(7, 17, 27, .1);
+        .score {
+          font-size: 24px;
+          color: rgb(255, 153, 0);
+          line-height: 28px;
+          margin-bottom: 6px;
+          text-align: center;
+        }
+        .total {
+          font-size: 12px;
+          color: rgb(7, 17, 27);
+          line-height: 12px;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+        .rankRate {
+          font-size: 10px;
+          color: rgb(147, 153, 159);
+          line-height: 10px;
+          text-align: center;
+          margin-bottom: 6px;
+        }
+      }
+      .right {
+        overflow: hidden;
+        padding-left: 24px;
+        .desc {
+          margin-bottom: 8px;
+          font-size: 0;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .name {
+            margin-right: 12px;
+            font-size: 12px;
+            color: rgb(7, 17, 27);
+            line-height: 18px;
+          }
+          .score {
+            font-size: 12px;
+            color: rgb(255, 153, 0);
+            line-height: 18px;
+            vertical-align: top;
+          }
+          .text {
+            font-size: 12px;
+            color: rgb(147, 153, 159);
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -4,10 +4,16 @@
 import {ratings as Action} from '../constants/actionType'
 
 const initialState = {
-    ratings: {}
+    ratings: []
 }
 
-const reducersMap = {}
+const reducersMap = {
+    [Action.GET_RATINGS]: (state, action) => {
+        return {
+            ratings: action.data
+        }
+    }
+}
 
 export default function ratings(state = initialState, action) {
     const reduceFn = reducersMap[action.type];

@@ -56,11 +56,11 @@ class Star extends React.Component {
     }
 
     render() {
-        const {size}=this.props;
+        const {size, style}=this.props;
         const {starArr}=this.state;
-        return <div className="star-container">
+        return <div className="star-container" style={style}>
             {
-                _.map(starArr,(star,i)=>{
+                _.map(starArr, (star, i) => {
                     return <span key={i} className={`star-item-${size} ${star}`}></span>
                 })
             }

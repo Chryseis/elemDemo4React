@@ -141,207 +141,207 @@
         }
       }
     }
-    .shopcart {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 50;
-      width: 100%;
-      .content {
-        display: flex;
-        height: 48px;
-        .content-left {
-          flex: 1;
-          background-color: #141d27;
-          .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            box-sizing: border-box;
-            padding: 6px;
-            border-radius: 50%;
-            margin: 0 12px 0 12px;
-            top: -10px;
-            background-color: #141d27;
-            .logo {
-              display: inline-block;
-              width: 44px;
-              height: 44px;
-              border-radius: 50%;
-              background-color: #2b343c;
-              text-align: center;
-              line-height: 44px;
-              &.high-light {
-                background-color: rgb(0, 160, 220);
-                .icon-shopping_cart {
-                  color: #fff;
-                }
-              }
-              .icon-shopping_cart {
-                font-size: 24px;
-                color: #80858a;
-                vertical-align: middle;
-              }
-            }
-            .num {
-              position: absolute;
-              top: 0;
-              right: 0;
-              width: 24px;
-              height: 16px;
-              line-height: 16px;
-              text-align: center;
-              border-radius: 16px;
-              font-size: 9px;
-              font-weight: 700;
-              color: #fff;
-              background-color: rgb(240, 20, 20);
-              box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
-            }
-          }
-          .price {
-            position: relative;
-            display: inline-block;
-            font-size: 16px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, .4);
-            margin-top: 12px;
-            padding-right: 12px;
-            line-height: 24px;
-            box-sizing: border-box;
-            vertical-align: top;
-            &.high-light {
-              color: #fff;
-            }
-            &:after {
-              position: absolute;
-              top: 0;
-              right: 0;
-              display: inline-block;
-              content: "";
-              width: 1px;
-              height: 100%;
-              background-color: rgba(255, 255, 255, .1);
-            }
-          }
-          .desc {
-            display: inline-block;
-            line-height: 48px;
-            padding-left: 12px;
-            font-size: 10px;
-            color: rgba(255, 255, 255, .4);
-            vertical-align: top;
-          }
-        }
-        .content-right {
-          flex: 0 0 105px;
-          .pay {
-            font-size: 12px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, .4);
-            text-align: center;
-            line-height: 48px;
-            background-color: #2b333b;
-            &.not-enough {
-              background-color: #2b333b;
-            }
-            &.enough {
-              background-color: #00b43c;
-              color: #fff;
-            }
-          }
-        }
-
-      }
-      .shopcart-list {
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        max-height: 258px;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-        transform: translateY(-100%);
-        &.toggle {
-          transition: all .3s ease-in-out;
-          &.entering, &.exited {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-          &.entered, &.exiting {
-            opacity: 1;
-            transform: translate3d(0, -100%, 0);
-          }
-        }
-        .list-header {
-          width: 100%;
-          height: 40px;
-          background: #f3f5f7;
-          line-height: 40px;
-          padding: 0 18px;
-          border-bottom: 1px solid rgba(7, 17, 27, .1);
+  }
+  .shopcart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    .content {
+      display: flex;
+      height: 48px;
+      .content-left {
+        flex: 1;
+        background-color: #141d27;
+        .logo-wrapper {
+          position: relative;
+          display: inline-block;
           box-sizing: border-box;
-          .title {
-            float: left;
-            font-size: 14px;
-            font-weight: 200;
-            color: rbg(7, 17, 27);
+          padding: 6px;
+          border-radius: 50%;
+          margin: 0 12px 0 12px;
+          top: -10px;
+          background-color: #141d27;
+          .logo {
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #2b343c;
+            text-align: center;
+            line-height: 44px;
+            &.high-light {
+              background-color: rgb(0, 160, 220);
+              .icon-shopping_cart {
+                color: #fff;
+              }
+            }
+            .icon-shopping_cart {
+              font-size: 24px;
+              color: #80858a;
+              vertical-align: middle;
+            }
           }
-          .empty {
-            float: right;
-            font-size: 12px;
-            color: rgb(0, 160, 220)
+          .num {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            border-radius: 16px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            background-color: rgb(240, 20, 20);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
           }
         }
-        .list-content {
-          padding: 0 18px;
-          background: #fff;
-          overflow-y: auto;
-          max-height: 218px;
-          .food {
-            position: relative;
-            width: 100%;
-            height: 48px;
-            z-index: 40;
-            .border-1px(rgba(7, 17, 27, .1));
-            .name {
-              position: absolute;
-              top: 0;
-              left: 0;
-              font-size: 14px;
-              color: rgb(7, 17, 27);
+        .price {
+          position: relative;
+          display: inline-block;
+          font-size: 16px;
+          font-weight: 700;
+          color: rgba(255, 255, 255, .4);
+          margin-top: 12px;
+          padding-right: 12px;
+          line-height: 24px;
+          box-sizing: border-box;
+          vertical-align: top;
+          &.high-light {
+            color: #fff;
+          }
+          &:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+            content: "";
+            width: 1px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, .1);
+          }
+        }
+        .desc {
+          display: inline-block;
+          line-height: 48px;
+          padding-left: 12px;
+          font-size: 10px;
+          color: rgba(255, 255, 255, .4);
+          vertical-align: top;
+        }
+      }
+      .content-right {
+        flex: 0 0 105px;
+        .pay {
+          font-size: 12px;
+          font-weight: 700;
+          color: rgba(255, 255, 255, .4);
+          text-align: center;
+          line-height: 48px;
+          background-color: #2b333b;
+          &.not-enough {
+            background-color: #2b333b;
+          }
+          &.enough {
+            background-color: #00b43c;
+            color: #fff;
+          }
+        }
+      }
+
+    }
+    .shopcart-list {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      max-height: 258px;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      transform: translateY(-100%);
+      &.toggle {
+        transition: all .3s ease-in-out;
+        &.entering, &.exited {
+          opacity: 0;
+          transform: translate3d(0, 0, 0);
+        }
+        &.entered, &.exiting {
+          opacity: 1;
+          transform: translate3d(0, -100%, 0);
+        }
+      }
+      .list-header {
+        width: 100%;
+        height: 40px;
+        background: #f3f5f7;
+        line-height: 40px;
+        padding: 0 18px;
+        border-bottom: 1px solid rgba(7, 17, 27, .1);
+        box-sizing: border-box;
+        .title {
+          float: left;
+          font-size: 14px;
+          font-weight: 200;
+          color: rbg(7, 17, 27);
+        }
+        .empty {
+          float: right;
+          font-size: 12px;
+          color: rgb(0, 160, 220)
+        }
+      }
+      .list-content {
+        padding: 0 18px;
+        background: #fff;
+        overflow-y: auto;
+        max-height: 218px;
+        .food {
+          position: relative;
+          width: 100%;
+          height: 48px;
+          z-index: 40;
+          .border-1px(rgba(7, 17, 27, .1));
+          .name {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 14px;
+            color: rgb(7, 17, 27);
+            line-height: 48px;
+          }
+          .cart-control {
+            position: absolute;
+            top: 0;
+            right: 0;
+            .price {
               line-height: 48px;
             }
-            .cart-control {
-              position: absolute;
-              top: 0;
-              right: 0;
-              .price {
-                line-height: 48px;
-              }
-            }
           }
         }
       }
-      .shopcart-mask {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background-color: rgba(7, 17, 27, .6);
-        transition: all .4s ease-in-out;
-        &.fade {
-          &.entering, &.exited {
-            opacity: 0;
-            background-color: rgba(7, 17, 27, 0);
-            visibility: hidden;
-          }
-          &.entered, &.exiting {
-            opacity: 1;
-            background-color: rgba(7, 17, 27, .6);
-            visibility: visible;
-          }
+    }
+    .shopcart-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-color: rgba(7, 17, 27, .6);
+      transition: all .4s ease-in-out;
+      &.fade {
+        &.entering, &.exited {
+          opacity: 0;
+          background-color: rgba(7, 17, 27, 0);
+          visibility: hidden;
+        }
+        &.entered, &.exiting {
+          opacity: 1;
+          background-color: rgba(7, 17, 27, .6);
+          visibility: visible;
         }
       }
     }

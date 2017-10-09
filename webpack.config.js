@@ -35,7 +35,7 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                use: ['style-loader', 'css-loader',  'less-loader',]
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader',]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -64,7 +64,7 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
-        host: '192.168.1.106',
+        host: '192.168.0.199',
         port: 1008,
         contentBase: './',
         compress: true,
@@ -79,11 +79,11 @@ module.exports = {
                 res.json({
                     errno: 0,
                     data: appData.goods
-                }).get('/api/ratings', (req, res) => {
-                    res.json({
-                        errno: 0,
-                        data: appData.ratings
-                    })
+                })
+            }).get('/api/ratings', (req, res) => {
+                res.json({
+                    errno: 0,
+                    data: appData.ratings
                 })
             })
         }
