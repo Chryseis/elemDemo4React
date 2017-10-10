@@ -17,8 +17,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: `js/[name].${timestamp}.js`,
-        chunkFilename: `js/[id].${timestamp}.js`,
+        filename: `js/[name].[hash:7].js`,
+        chunkFilename: `js/[id].[hash:7].js`,
         sourceMapFilename: '[file].map'
     },
     module: {
@@ -76,7 +76,7 @@ module.exports = {
     devtool: "source-map",
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': 'production'
+            'process.env.NODE_ENV': JSON.stringify("production")
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
