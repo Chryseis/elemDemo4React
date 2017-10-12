@@ -51,6 +51,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-iscroll": "^2.0.3",
+    "react-keeper": "^2.1.6",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-transition-group": "^2.2.0",
