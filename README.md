@@ -9,3 +9,7 @@
 
 ## Demo
 [http://elem4react.mintcode.com/](http://elem4react.mintcode.com/) 
+
+
+## 之后改进
+可能会在这个项目上进行一些自己的新技术的尝试，如动态加载路由,redux-saga,mobx,react-keeper,动画插件的更新（这个最重要，和vue的比较之后，发现动画插件这块跟vue的差距最大，要找个方法解决）
