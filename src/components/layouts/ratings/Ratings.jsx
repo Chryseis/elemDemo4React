@@ -39,7 +39,7 @@ class Ratings extends React.Component {
 
     componentDidMount() {
         const {actions}=this.props;
-        actions.getRatings();
+        actions.fetchRatings();
     }
 
     changeHeight = () => {

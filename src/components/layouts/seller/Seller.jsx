@@ -51,7 +51,7 @@ class Seller extends React.Component {
         const {info}=this.props.seller;
         const {actions}=this.props;
         if (!info.pics) {
-            actions.getSeller();
+            actions.fetchSeller();
         } else {
             this.setState({
                 width: info.pics.length * 126 - 6

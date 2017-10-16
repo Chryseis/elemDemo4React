@@ -26,7 +26,7 @@ class Header extends React.Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.getSeller();
+        actions.fetchSeller();
     }
 
     supportClassType = () => {

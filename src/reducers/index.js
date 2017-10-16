@@ -6,7 +6,6 @@ import seller from './seller'
 import ratings from './ratings'
 import {combineReducers} from 'redux'
 
-
 const reducer = combineReducers({
     goods,
     seller,

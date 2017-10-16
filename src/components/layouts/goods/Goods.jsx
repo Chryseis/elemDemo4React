@@ -33,7 +33,7 @@ class Goods extends React.Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.getGoods();
+        actions.fetchGoods();
         this.firstMounted = true;
     }
 
