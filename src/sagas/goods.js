@@ -8,9 +8,13 @@ import * as GoodAction from '../actions/goods'
 
 function* getGoods() {
     while (true) {
-        yield take(Action.FETCH_GOODS);
-        let data = yield call(request, '/api/goods', {method: 'get'});
-        yield put(GoodAction.getGoods(data));
+        try {
+            yield take(Action.FETCH_GOODS);
+            let data = yield call(request, '/api/goods', {method: 'get'});
+            yield put(GoodAction.getGoods(data));
+        } catch (e) {
+            console.log(e);// eslint-disable-line
+        }
     }
 }
 

@@ -18,6 +18,14 @@ class CartControl extends React.Component {
         type: 1
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.count !== this.props.count) {
+            return true;
+        }
+        return false
+    }
+
+
     render() {
         const {count, addCart, decCart, isBall, style, type} = this.props;
         return <div className="cartcontrol" style={style}>
