@@ -23,6 +23,7 @@ class CartControl extends React.Component {
             return true;
         }
         return false
+
     }
 
 
