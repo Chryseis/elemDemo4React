@@ -7,23 +7,28 @@
   height: 100%;
   overflow: auto;
   color: #fff;
+  transform-origin:50% 134px;
   &.fade {
     transition: all .3s linear;
     &.entering {
       opacity: 0;
       background-color: rgba(7, 17, 27, 0);
+      transform: scale(.1);
     }
     &.entered {
       opacity: 1;
       background-color: rgba(7, 17, 27, .8);
+      transform: scale(1);
     }
     &.exiting {
       opacity: 1;
       background-color: rgba(7, 17, 27, .8);
+      transform: scale(1);
     }
     &.exited {
       opacity: 0;
       background-color: rgba(7, 17, 27, 0);
+      transform: scale(.1);
     }
   }
   .detail-wrapper {

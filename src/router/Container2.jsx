@@ -8,9 +8,7 @@ import {Provider} from 'react-redux';
 import configureStore from '../store/configureStore2';
 import Header from '../components/layouts/header';
 import Tab2 from '../components/layouts/tab/Tab2';
-import Seller from '../components/layouts/seller';
-import Goods from '../components/layouts/goods';
-import Ratings from '../components/layouts/ratings';
+import {LoadGoods, LoadRatings, LoadSeller} from './dynamicComponent'
 
 class Container2 extends React.Component {
     constructor(props) {
@@ -23,9 +21,9 @@ class Container2 extends React.Component {
                 <div className="app">
                     <Header />
                     <Tab2 />
-                    <Route key="seller" path="/seller" component={Seller}/>
-                    <Route cache index key="goods" path="/goods" component={Goods}/>
-                    <Route key="ratings" path="/ratings" component={Ratings}/>
+                    <Route key="seller" path="/seller" component={LoadSeller}/>
+                    <Route cache index key="goods" path="/goods" component={LoadGoods}/>
+                    <Route key="ratings" path="/ratings" component={LoadRatings}/>
                     <Route miss component={NoMatch}/>
                 </div>
             </Router>
