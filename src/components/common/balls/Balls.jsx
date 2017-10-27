@@ -8,7 +8,7 @@ import './balls.less';
 import {TransitionGroup, CSSTransition}  from 'react-transition-group';
 import Ball from './Ball';
 
-class Balls extends React.Component {
+class Balls extends React.PureComponent {
     constructor(props) {
         super(props)
 
